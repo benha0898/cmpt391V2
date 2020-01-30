@@ -1,4 +1,0 @@
-﻿CREATE TABLE [dbo].[Random]
-(
-	[Id] INT NOT NULL PRIMARY KEY
-)
