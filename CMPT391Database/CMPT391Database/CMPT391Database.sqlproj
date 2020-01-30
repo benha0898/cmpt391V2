@@ -56,11 +56,24 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\Views" />
+    <Folder Include="dbo\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="student.sql" />
+    <Build Include="dbo\Tables\student.sql" />
+    <Build Include="dbo\Tables\department.sql" />
+    <Build Include="dbo\Tables\instructor.sql" />
+    <Build Include="dbo\Tables\course.sql" />
+    <Build Include="dbo\Tables\section.sql" />
+    <Build Include="dbo\Tables\time.sql" />
+    <Build Include="dbo\Tables\takes.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CMPT391Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LocalUniversityDB.publish.xml" />
   </ItemGroup>
 </Project>
