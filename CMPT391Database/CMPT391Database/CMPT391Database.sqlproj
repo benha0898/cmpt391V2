@@ -70,6 +70,7 @@
     <Build Include="dbo\Tables\section.sql" />
     <Build Include="dbo\Tables\time.sql" />
     <Build Include="dbo\Tables\takes.sql" />
+    <Build Include="dbo\Tables\prereq.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CMPT391Database.refactorlog" />
