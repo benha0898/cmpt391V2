@@ -60,6 +60,7 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Views" />
     <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\student.sql" />
@@ -75,5 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="LocalUniversityDB.publish.xml" />
+    <None Include="dbo\Scripts\Populate.sql" />
   </ItemGroup>
 </Project>
