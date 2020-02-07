@@ -5,7 +5,7 @@
 	level INT NULL,
 	title NCHAR(30) NULL,
 	description NCHAR(100) NULL,
-	dept NCHAR(20) NULL,
+	dept NCHAR(100) NULL,
 	credit INT NULL,
 	CONSTRAINT fk_course_department FOREIGN KEY (dept) REFERENCES department (dept_name),
 )

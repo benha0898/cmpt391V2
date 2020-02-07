@@ -1,4 +1,5 @@
-﻿DELETE from dbo.student;
+﻿/* Populate Student table */
+DELETE from dbo.student;
 DBCC CHECKIDENT('dbo.student', RESEED, 0);
 
 Declare @Id int
@@ -21,6 +22,5 @@ Begin
         'Postal ' + CAST(@Id as nchar(20)),
         CAST(FLOOR(rand()*(120-0+1)+0) as int));
 
-   Print @Id
    Set @Id = @Id + 1
 End

@@ -77,6 +77,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="LocalUniversityDB.publish.xml" />
-    <None Include="dbo\Scripts\Populate.sql" />
+    <None Include="dbo\Scripts\PopulateStudent.sql" />
+    <None Include="dbo\Scripts\PopulateDepartment.sql" />
+    <None Include="dbo\Scripts\PopulateInstructor.sql" />
+    <None Include="dbo\Scripts\AssignDeptHead.sql" />
   </ItemGroup>
 </Project>
