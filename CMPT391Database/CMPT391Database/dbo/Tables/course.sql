@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].course
 (
-	id INT NOT NULL PRIMARY KEY,
+	id INT NOT NULL PRIMARY KEY IDENTITY,
 	subject NCHAR(10) NULL,
 	level INT NULL,
 	title NCHAR(30) NULL,
