@@ -16,7 +16,7 @@ namespace WindowForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Course());
+            Application.Run(new Main());
         }
     }
 }

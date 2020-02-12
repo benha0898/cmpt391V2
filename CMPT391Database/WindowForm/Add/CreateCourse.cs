@@ -10,16 +10,17 @@ using System.Windows.Forms;
 
 namespace WindowForm.Add
 {
-    public partial class Student : Form
+    public partial class CreateCourse : Form
     {
-        public Student()
+        public CreateCourse()
         {
             InitializeComponent();
         }
 
-        private void Student_Load(object sender, EventArgs e)
+        private void CreateCourse_Load(object sender, EventArgs e)
         {
 
         }
+
     }
 }

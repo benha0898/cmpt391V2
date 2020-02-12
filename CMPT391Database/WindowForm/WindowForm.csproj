@@ -49,11 +49,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Add\Student.cs">
+    <Compile Include="Add\CreateInstructor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Add\Student.Designer.cs">
-      <DependentUpon>Student.cs</DependentUpon>
+    <Compile Include="Add\CreateInstructor.Designer.cs">
+      <DependentUpon>CreateInstructor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\CreateStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\CreateStudent.Designer.cs">
+      <DependentUpon>CreateStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\CreateCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\CreateCourse.Designer.cs">
+      <DependentUpon>CreateCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\CreateDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\CreateDepartment.Designer.cs">
+      <DependentUpon>CreateDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\CreateSection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\CreateSection.Designer.cs">
+      <DependentUpon>CreateSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\Enroll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\Enroll.Designer.cs">
+      <DependentUpon>Enroll.cs</DependentUpon>
     </Compile>
     <Compile Include="Course.cs">
       <SubType>Form</SubType>
@@ -79,8 +109,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UniversityDBDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Add\Student.resx">
-      <DependentUpon>Student.cs</DependentUpon>
+    <EmbeddedResource Include="Add\CreateDepartment.resx">
+      <DependentUpon>CreateDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\CreateInstructor.resx">
+      <DependentUpon>CreateInstructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\CreateSection.resx">
+      <DependentUpon>CreateSection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\CreateStudent.resx">
+      <DependentUpon>CreateStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\CreateCourse.resx">
+      <DependentUpon>CreateCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\Enroll.resx">
+      <DependentUpon>Enroll.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Course.resx">
       <DependentUpon>Course.cs</DependentUpon>

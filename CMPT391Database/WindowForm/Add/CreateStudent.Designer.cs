@@ -1,6 +1,6 @@
 ﻿namespace WindowForm.Add
 {
-    partial class Student
+    partial class CreateStudent
     {
         /// <summary>
         /// Required designer variable.
@@ -54,6 +54,7 @@
             this.major_label = new System.Windows.Forms.Label();
             this.submit_button = new System.Windows.Forms.Button();
             this.major_checkbox = new System.Windows.Forms.CheckBox();
+            this.sucess_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.credits_input)).BeginInit();
             this.SuspendLayout();
             // 
@@ -281,11 +282,22 @@
             this.major_checkbox.Text = "Undeclared";
             this.major_checkbox.UseVisualStyleBackColor = true;
             // 
-            // Student
+            // sucess_label
+            // 
+            this.sucess_label.AutoSize = true;
+            this.sucess_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sucess_label.Location = new System.Drawing.Point(189, 404);
+            this.sucess_label.Name = "sucess_label";
+            this.sucess_label.Size = new System.Drawing.Size(166, 25);
+            this.sucess_label.TabIndex = 26;
+            this.sucess_label.Text = "Student Added: ";
+            // 
+            // CreateStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(669, 473);
+            this.ClientSize = new System.Drawing.Size(659, 461);
+            this.Controls.Add(this.sucess_label);
             this.Controls.Add(this.major_checkbox);
             this.Controls.Add(this.submit_button);
             this.Controls.Add(this.major_label);
@@ -312,8 +324,8 @@
             this.Controls.Add(this.first_name_input);
             this.Controls.Add(this.personal_label);
             this.Controls.Add(this.add_student_label);
-            this.Name = "Student";
-            this.Text = "Form1";
+            this.Name = "CreateStudent";
+            this.Text = "Add Student";
             this.Load += new System.EventHandler(this.Student_Load);
             ((System.ComponentModel.ISupportInitialize)(this.credits_input)).EndInit();
             this.ResumeLayout(false);
@@ -349,5 +361,6 @@
         private System.Windows.Forms.Label major_label;
         private System.Windows.Forms.Button submit_button;
         private System.Windows.Forms.CheckBox major_checkbox;
+        private System.Windows.Forms.Label sucess_label;
     }
 }
