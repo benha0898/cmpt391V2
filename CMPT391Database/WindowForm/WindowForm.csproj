@@ -113,5 +113,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CMPT391Database\CMPT391Database.sqlproj">
+      <Project>{1c5175ba-e1c3-4d15-8d3f-9ba290fc42aa}</Project>
+      <Name>CMPT391Database</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
