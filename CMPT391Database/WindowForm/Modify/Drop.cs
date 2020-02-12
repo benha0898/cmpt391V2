@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowForm.Add
+namespace WindowForm.Modify
 {
-    public partial class Student : Form
+    public partial class Drop : Form
     {
-        public Student()
+        public Drop()
         {
             InitializeComponent();
-        }
-
-        private void Student_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
