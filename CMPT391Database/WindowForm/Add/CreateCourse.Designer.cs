@@ -239,7 +239,6 @@
             this.Controls.Add(this.add_course_label);
             this.Name = "CreateCourse";
             this.Text = "Add Course";
-            this.Load += new System.EventHandler(this.CreateCourse_Load);
             ((System.ComponentModel.ISupportInitialize)(this.number_input)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.credits_input)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.year_input)).EndInit();

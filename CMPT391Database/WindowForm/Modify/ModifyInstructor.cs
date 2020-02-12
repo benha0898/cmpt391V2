@@ -8,14 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowForm.Add
+namespace WindowForm.Modify
 {
-    public partial class CreateCourse : Form
+    public partial class ModifyInstructor : Form
     {
-        public CreateCourse()
+        public ModifyInstructor()
         {
             InitializeComponent();
         }
-
     }
 }

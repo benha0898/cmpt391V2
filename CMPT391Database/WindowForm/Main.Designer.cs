@@ -41,6 +41,8 @@
             this.modify_dept_button = new System.Windows.Forms.Button();
             this.modify_instructor_button = new System.Windows.Forms.Button();
             this.modify_student_button = new System.Windows.Forms.Button();
+            this.modify_course_button = new System.Windows.Forms.Button();
+            this.add_section_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // add_label
@@ -131,6 +133,7 @@
             this.mofidy_enroll_button.TabIndex = 13;
             this.mofidy_enroll_button.Text = "Drop Classes";
             this.mofidy_enroll_button.UseVisualStyleBackColor = true;
+            this.mofidy_enroll_button.Click += new System.EventHandler(this.mofidy_enroll_button_Click);
             // 
             // modify_teaches_button
             // 
@@ -140,6 +143,7 @@
             this.modify_teaches_button.TabIndex = 12;
             this.modify_teaches_button.Text = "Teaches";
             this.modify_teaches_button.UseVisualStyleBackColor = true;
+            this.modify_teaches_button.Click += new System.EventHandler(this.modify_teaches_button_Click);
             // 
             // modify_dept_button
             // 
@@ -149,6 +153,7 @@
             this.modify_dept_button.TabIndex = 11;
             this.modify_dept_button.Text = "Department";
             this.modify_dept_button.UseVisualStyleBackColor = true;
+            this.modify_dept_button.Click += new System.EventHandler(this.modify_dept_button_Click);
             // 
             // modify_instructor_button
             // 
@@ -158,6 +163,7 @@
             this.modify_instructor_button.TabIndex = 9;
             this.modify_instructor_button.Text = "Instructor";
             this.modify_instructor_button.UseVisualStyleBackColor = true;
+            this.modify_instructor_button.Click += new System.EventHandler(this.modify_instructor_button_Click);
             // 
             // modify_student_button
             // 
@@ -167,12 +173,35 @@
             this.modify_student_button.TabIndex = 8;
             this.modify_student_button.Text = "Student";
             this.modify_student_button.UseVisualStyleBackColor = true;
+            this.modify_student_button.Click += new System.EventHandler(this.modify_student_button_Click);
+            // 
+            // modify_course_button
+            // 
+            this.modify_course_button.Location = new System.Drawing.Point(299, 270);
+            this.modify_course_button.Name = "modify_course_button";
+            this.modify_course_button.Size = new System.Drawing.Size(89, 32);
+            this.modify_course_button.TabIndex = 14;
+            this.modify_course_button.Text = "Course";
+            this.modify_course_button.UseVisualStyleBackColor = true;
+            this.modify_course_button.Click += new System.EventHandler(this.modify_course_button_Click);
+            // 
+            // add_section_button
+            // 
+            this.add_section_button.Location = new System.Drawing.Point(87, 609);
+            this.add_section_button.Name = "add_section_button";
+            this.add_section_button.Size = new System.Drawing.Size(89, 32);
+            this.add_section_button.TabIndex = 15;
+            this.add_section_button.Text = "Section";
+            this.add_section_button.UseVisualStyleBackColor = true;
+            this.add_section_button.Click += new System.EventHandler(this.add_section_button_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 622);
+            this.ClientSize = new System.Drawing.Size(497, 664);
+            this.Controls.Add(this.add_section_button);
+            this.Controls.Add(this.modify_course_button);
             this.Controls.Add(this.mofidy_enroll_button);
             this.Controls.Add(this.modify_teaches_button);
             this.Controls.Add(this.modify_dept_button);
@@ -208,5 +237,7 @@
         private System.Windows.Forms.Button modify_dept_button;
         private System.Windows.Forms.Button modify_instructor_button;
         private System.Windows.Forms.Button modify_student_button;
+        private System.Windows.Forms.Button modify_course_button;
+        private System.Windows.Forms.Button add_section_button;
     }
 }
