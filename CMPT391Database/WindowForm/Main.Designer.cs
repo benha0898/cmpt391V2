@@ -71,6 +71,7 @@
             this.add_student_button.TabIndex = 2;
             this.add_student_button.Text = "Student";
             this.add_student_button.UseVisualStyleBackColor = true;
+            this.add_student_button.Click += new System.EventHandler(this.add_student_button_Click);
             // 
             // add_instructor_button
             // 
@@ -80,6 +81,7 @@
             this.add_instructor_button.TabIndex = 3;
             this.add_instructor_button.Text = "Instructor";
             this.add_instructor_button.UseVisualStyleBackColor = true;
+            this.add_instructor_button.Click += new System.EventHandler(this.add_instructor_button_Click);
             // 
             // add_course_button
             // 
@@ -89,6 +91,7 @@
             this.add_course_button.TabIndex = 4;
             this.add_course_button.Text = "Course";
             this.add_course_button.UseVisualStyleBackColor = true;
+            this.add_course_button.Click += new System.EventHandler(this.add_course_button_Click);
             // 
             // add_dept_button
             // 
@@ -98,6 +101,7 @@
             this.add_dept_button.TabIndex = 5;
             this.add_dept_button.Text = "Department/  Head";
             this.add_dept_button.UseVisualStyleBackColor = true;
+            this.add_dept_button.Click += new System.EventHandler(this.add_dept_button_Click);
             // 
             // add_teaches_button
             // 
@@ -107,6 +111,7 @@
             this.add_teaches_button.TabIndex = 6;
             this.add_teaches_button.Text = "Teaches";
             this.add_teaches_button.UseVisualStyleBackColor = true;
+            this.add_teaches_button.Click += new System.EventHandler(this.add_teaches_button_Click);
             // 
             // add_enroll_button
             // 
@@ -116,6 +121,7 @@
             this.add_enroll_button.TabIndex = 7;
             this.add_enroll_button.Text = "Enroll Classes";
             this.add_enroll_button.UseVisualStyleBackColor = true;
+            this.add_enroll_button.Click += new System.EventHandler(this.add_enroll_button_Click);
             // 
             // mofidy_enroll_button
             // 

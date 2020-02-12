@@ -85,6 +85,12 @@
     <Compile Include="Add\Enroll.Designer.cs">
       <DependentUpon>Enroll.cs</DependentUpon>
     </Compile>
+    <Compile Include="Add\Teaches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\Teaches.Designer.cs">
+      <DependentUpon>Teaches.cs</DependentUpon>
+    </Compile>
     <Compile Include="Course.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Add\Enroll.resx">
       <DependentUpon>Enroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\Teaches.resx">
+      <DependentUpon>Teaches.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Course.resx">
       <DependentUpon>Course.cs</DependentUpon>
