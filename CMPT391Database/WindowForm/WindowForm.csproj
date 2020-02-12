@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>WindowForm.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,16 +55,16 @@
     <Compile Include="Add\Student.Designer.cs">
       <DependentUpon>Student.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataSetForUniversity.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetForUniversity.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Course.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Course.Designer.cs">
+      <DependentUpon>Course.cs</DependentUpon>
+    </Compile>
+    <Compile Include="database_uni.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>database_uni.xsd</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -71,11 +74,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UniversityDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UniversityDBDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Add\Student.resx">
       <DependentUpon>Student.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Course.resx">
+      <DependentUpon>Course.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -89,16 +97,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="DataSetForUniversity.xsc">
-      <DependentUpon>DataSetForUniversity.xsd</DependentUpon>
+    <None Include="database_uni.xsc">
+      <DependentUpon>database_uni.xsd</DependentUpon>
     </None>
-    <None Include="DataSetForUniversity.xsd">
+    <None Include="database_uni.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetForUniversity.Designer.cs</LastGenOutput>
+      <LastGenOutput>database_uni.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DataSetForUniversity.xss">
-      <DependentUpon>DataSetForUniversity.xsd</DependentUpon>
+    <None Include="database_uni.xss">
+      <DependentUpon>database_uni.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -109,6 +117,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UniversityDBDataSet.xsc">
+      <DependentUpon>UniversityDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UniversityDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UniversityDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UniversityDBDataSet.xss">
+      <DependentUpon>UniversityDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="WindowForm.Properties.Settings.datasource" />
+    <None Include="WindowForm.Properties.Settings1.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
