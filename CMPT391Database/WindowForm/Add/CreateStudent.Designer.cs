@@ -320,7 +320,6 @@
             this.sucess_label.Size = new System.Drawing.Size(247, 37);
             this.sucess_label.TabIndex = 26;
             this.sucess_label.Text = "Student Added: ";
-            this.sucess_label.Click += new System.EventHandler(this.sucess_label_Click);
             // 
             // success_label
             // 
