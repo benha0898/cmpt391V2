@@ -61,120 +61,112 @@
             this.dept_input.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.dept_input.DisplayMember = "Dept_Name";
             this.dept_input.FormattingEnabled = true;
-            this.dept_input.Location = new System.Drawing.Point(21, 215);
+            this.dept_input.Location = new System.Drawing.Point(32, 331);
+            this.dept_input.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dept_input.Name = "dept_input";
-            this.dept_input.Size = new System.Drawing.Size(129, 21);
+            this.dept_input.Size = new System.Drawing.Size(192, 28);
             this.dept_input.TabIndex = 31;
             this.dept_input.ValueMember = "Dept_Name";
+            this.dept_input.SelectedIndexChanged += new System.EventHandler(this.dept_input_SelectedIndexChanged);
             // 
             // submit_button
             // 
-            this.submit_button.Location = new System.Drawing.Point(24, 414);
-            this.submit_button.Margin = new System.Windows.Forms.Padding(2);
+            this.submit_button.Location = new System.Drawing.Point(36, 637);
             this.submit_button.Name = "submit_button";
-            this.submit_button.Size = new System.Drawing.Size(126, 36);
+            this.submit_button.Size = new System.Drawing.Size(189, 55);
             this.submit_button.TabIndex = 38;
             this.submit_button.Text = "Submit";
             this.submit_button.UseVisualStyleBackColor = true;
+            this.submit_button.Click += new System.EventHandler(this.submit_button_Click);
             // 
             // course_label
             // 
             this.course_label.AutoSize = true;
             this.course_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.course_label.Location = new System.Drawing.Point(21, 169);
-            this.course_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.course_label.Location = new System.Drawing.Point(32, 260);
             this.course_label.Name = "course_label";
-            this.course_label.Size = new System.Drawing.Size(59, 17);
+            this.course_label.Size = new System.Drawing.Size(87, 25);
             this.course_label.TabIndex = 51;
             this.course_label.Text = "Course";
             // 
             // end_time_label
             // 
             this.end_time_label.AutoSize = true;
-            this.end_time_label.Location = new System.Drawing.Point(357, 309);
-            this.end_time_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.end_time_label.Location = new System.Drawing.Point(536, 475);
             this.end_time_label.Name = "end_time_label";
-            this.end_time_label.Size = new System.Drawing.Size(52, 13);
+            this.end_time_label.Size = new System.Drawing.Size(76, 20);
             this.end_time_label.TabIndex = 50;
             this.end_time_label.Text = "End Time";
             // 
             // start_time_label
             // 
             this.start_time_label.AutoSize = true;
-            this.start_time_label.Location = new System.Drawing.Point(354, 251);
-            this.start_time_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.start_time_label.Location = new System.Drawing.Point(531, 386);
             this.start_time_label.Name = "start_time_label";
-            this.start_time_label.Size = new System.Drawing.Size(55, 13);
+            this.start_time_label.Size = new System.Drawing.Size(82, 20);
             this.start_time_label.TabIndex = 49;
             this.start_time_label.Text = "Start Time";
             // 
             // days_label
             // 
             this.days_label.AutoSize = true;
-            this.days_label.Location = new System.Drawing.Point(354, 58);
-            this.days_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.days_label.Location = new System.Drawing.Point(531, 89);
             this.days_label.Name = "days_label";
-            this.days_label.Size = new System.Drawing.Size(31, 13);
+            this.days_label.Size = new System.Drawing.Size(45, 20);
             this.days_label.TabIndex = 48;
             this.days_label.Text = "Days";
             // 
             // capacity_label
             // 
             this.capacity_label.AutoSize = true;
-            this.capacity_label.Location = new System.Drawing.Point(18, 309);
-            this.capacity_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.capacity_label.Location = new System.Drawing.Point(27, 475);
             this.capacity_label.Name = "capacity_label";
-            this.capacity_label.Size = new System.Drawing.Size(48, 13);
+            this.capacity_label.Size = new System.Drawing.Size(70, 20);
             this.capacity_label.TabIndex = 47;
             this.capacity_label.Text = "Capacity";
             // 
             // classroom_label
             // 
             this.classroom_label.AutoSize = true;
-            this.classroom_label.Location = new System.Drawing.Point(21, 251);
-            this.classroom_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.classroom_label.Location = new System.Drawing.Point(32, 386);
             this.classroom_label.Name = "classroom_label";
-            this.classroom_label.Size = new System.Drawing.Size(55, 13);
+            this.classroom_label.Size = new System.Drawing.Size(84, 20);
             this.classroom_label.TabIndex = 45;
             this.classroom_label.Text = "Classroom";
             // 
             // dept_label
             // 
             this.dept_label.AutoSize = true;
-            this.dept_label.Location = new System.Drawing.Point(20, 199);
-            this.dept_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.dept_label.Location = new System.Drawing.Point(30, 306);
             this.dept_label.Name = "dept_label";
-            this.dept_label.Size = new System.Drawing.Size(62, 13);
+            this.dept_label.Size = new System.Drawing.Size(94, 20);
             this.dept_label.TabIndex = 44;
             this.dept_label.Text = "Department";
             // 
             // year_label
             // 
             this.year_label.AutoSize = true;
-            this.year_label.Location = new System.Drawing.Point(21, 111);
-            this.year_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.year_label.Location = new System.Drawing.Point(32, 171);
             this.year_label.Name = "year_label";
-            this.year_label.Size = new System.Drawing.Size(29, 13);
+            this.year_label.Size = new System.Drawing.Size(43, 20);
             this.year_label.TabIndex = 43;
             this.year_label.Text = "Year";
             // 
             // term_label
             // 
             this.term_label.AutoSize = true;
-            this.term_label.Location = new System.Drawing.Point(177, 58);
-            this.term_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.term_label.Location = new System.Drawing.Point(266, 89);
             this.term_label.Name = "term_label";
-            this.term_label.Size = new System.Drawing.Size(31, 13);
+            this.term_label.Size = new System.Drawing.Size(45, 20);
             this.term_label.TabIndex = 42;
             this.term_label.Text = "Term";
             // 
             // sectionid_label
             // 
             this.sectionid_label.AutoSize = true;
-            this.sectionid_label.Location = new System.Drawing.Point(20, 58);
-            this.sectionid_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.sectionid_label.Location = new System.Drawing.Point(30, 89);
             this.sectionid_label.Name = "sectionid_label";
-            this.sectionid_label.Size = new System.Drawing.Size(57, 13);
+            this.sectionid_label.Size = new System.Drawing.Size(84, 20);
             this.sectionid_label.TabIndex = 41;
             this.sectionid_label.Text = "Section ID";
             // 
@@ -182,10 +174,9 @@
             // 
             this.time_label.AutoSize = true;
             this.time_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time_label.Location = new System.Drawing.Point(352, 9);
-            this.time_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.time_label.Location = new System.Drawing.Point(528, 14);
             this.time_label.Name = "time_label";
-            this.time_label.Size = new System.Drawing.Size(73, 29);
+            this.time_label.Size = new System.Drawing.Size(101, 40);
             this.time_label.TabIndex = 40;
             this.time_label.Text = "Time";
             // 
@@ -193,10 +184,9 @@
             // 
             this.section_label.AutoSize = true;
             this.section_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.section_label.Location = new System.Drawing.Point(19, 9);
-            this.section_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.section_label.Location = new System.Drawing.Point(28, 14);
             this.section_label.Name = "section_label";
-            this.section_label.Size = new System.Drawing.Size(101, 29);
+            this.section_label.Size = new System.Drawing.Size(144, 40);
             this.section_label.TabIndex = 39;
             this.section_label.Text = "Section";
             // 
@@ -204,20 +194,18 @@
             // 
             this.end_time_input.CustomFormat = "";
             this.end_time_input.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.end_time_input.Location = new System.Drawing.Point(360, 324);
-            this.end_time_input.Margin = new System.Windows.Forms.Padding(2);
+            this.end_time_input.Location = new System.Drawing.Point(540, 498);
             this.end_time_input.Name = "end_time_input";
-            this.end_time_input.Size = new System.Drawing.Size(187, 20);
+            this.end_time_input.Size = new System.Drawing.Size(278, 26);
             this.end_time_input.TabIndex = 37;
             // 
             // start_time_input
             // 
             this.start_time_input.CustomFormat = "";
             this.start_time_input.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.start_time_input.Location = new System.Drawing.Point(357, 266);
-            this.start_time_input.Margin = new System.Windows.Forms.Padding(2);
+            this.start_time_input.Location = new System.Drawing.Point(536, 409);
             this.start_time_input.Name = "start_time_input";
-            this.start_time_input.Size = new System.Drawing.Size(190, 20);
+            this.start_time_input.Size = new System.Drawing.Size(283, 26);
             this.start_time_input.TabIndex = 36;
             // 
             // days_checklist
@@ -233,44 +221,40 @@
             "W",
             "R",
             "F"});
-            this.days_checklist.Location = new System.Drawing.Point(357, 73);
-            this.days_checklist.Margin = new System.Windows.Forms.Padding(2);
+            this.days_checklist.Location = new System.Drawing.Point(536, 112);
             this.days_checklist.Name = "days_checklist";
-            this.days_checklist.Size = new System.Drawing.Size(190, 154);
+            this.days_checklist.Size = new System.Drawing.Size(283, 234);
             this.days_checklist.TabIndex = 35;
             // 
             // capacity_input
             // 
-            this.capacity_input.Location = new System.Drawing.Point(21, 324);
-            this.capacity_input.Margin = new System.Windows.Forms.Padding(2);
+            this.capacity_input.Location = new System.Drawing.Point(32, 498);
             this.capacity_input.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.capacity_input.Name = "capacity_input";
-            this.capacity_input.Size = new System.Drawing.Size(129, 20);
+            this.capacity_input.Size = new System.Drawing.Size(194, 26);
             this.capacity_input.TabIndex = 34;
             // 
             // classroom_input
             // 
-            this.classroom_input.Location = new System.Drawing.Point(21, 266);
-            this.classroom_input.Margin = new System.Windows.Forms.Padding(2);
+            this.classroom_input.Location = new System.Drawing.Point(32, 409);
             this.classroom_input.Name = "classroom_input";
-            this.classroom_input.Size = new System.Drawing.Size(129, 20);
+            this.classroom_input.Size = new System.Drawing.Size(192, 26);
             this.classroom_input.TabIndex = 33;
             // 
             // year_input
             // 
-            this.year_input.Location = new System.Drawing.Point(23, 126);
-            this.year_input.Margin = new System.Windows.Forms.Padding(2);
+            this.year_input.Location = new System.Drawing.Point(34, 194);
             this.year_input.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.year_input.Name = "year_input";
-            this.year_input.Size = new System.Drawing.Size(127, 20);
+            this.year_input.Size = new System.Drawing.Size(190, 26);
             this.year_input.TabIndex = 30;
             // 
             // term_input
@@ -283,35 +267,34 @@
             "Winter",
             "Spring",
             "Summer"});
-            this.term_input.Location = new System.Drawing.Point(180, 73);
-            this.term_input.Margin = new System.Windows.Forms.Padding(2);
+            this.term_input.Location = new System.Drawing.Point(270, 112);
             this.term_input.Name = "term_input";
-            this.term_input.Size = new System.Drawing.Size(112, 21);
+            this.term_input.Size = new System.Drawing.Size(166, 28);
             this.term_input.TabIndex = 29;
             // 
             // sectionid_input
             // 
-            this.sectionid_input.Location = new System.Drawing.Point(23, 73);
-            this.sectionid_input.Margin = new System.Windows.Forms.Padding(2);
+            this.sectionid_input.Location = new System.Drawing.Point(34, 112);
             this.sectionid_input.Name = "sectionid_input";
-            this.sectionid_input.Size = new System.Drawing.Size(127, 20);
+            this.sectionid_input.Size = new System.Drawing.Size(188, 26);
             this.sectionid_input.TabIndex = 28;
             // 
             // sucess_label
             // 
             this.sucess_label.AutoSize = true;
             this.sucess_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sucess_label.Location = new System.Drawing.Point(203, 417);
+            this.sucess_label.Location = new System.Drawing.Point(304, 642);
+            this.sucess_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sucess_label.Name = "sucess_label";
-            this.sucess_label.Size = new System.Drawing.Size(164, 25);
+            this.sucess_label.Size = new System.Drawing.Size(243, 37);
             this.sucess_label.TabIndex = 55;
             this.sucess_label.Text = "Section Added: ";
             // 
             // CreateSection
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 461);
+            this.ClientSize = new System.Drawing.Size(988, 709);
             this.Controls.Add(this.sucess_label);
             this.Controls.Add(this.dept_input);
             this.Controls.Add(this.submit_button);
@@ -335,8 +318,10 @@
             this.Controls.Add(this.year_input);
             this.Controls.Add(this.term_input);
             this.Controls.Add(this.sectionid_input);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CreateSection";
             this.Text = "Add Section";
+            this.Load += new System.EventHandler(this.CreateSection_Load);
             ((System.ComponentModel.ISupportInitialize)(this.capacity_input)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.year_input)).EndInit();
             this.ResumeLayout(false);
