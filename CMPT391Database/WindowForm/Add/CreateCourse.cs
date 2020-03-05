@@ -21,7 +21,6 @@ namespace WindowForm.Add
 
         private void submit_button_Click(object sender, EventArgs e)
         {
-            //SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True");
             con.Open();
 
 
