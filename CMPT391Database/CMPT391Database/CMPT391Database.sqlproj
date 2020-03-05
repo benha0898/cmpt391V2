@@ -83,5 +83,8 @@
     <None Include="dbo\Scripts\AssignDeptHead.sql" />
     <None Include="dbo\Scripts\PopulateTime.sql" />
     <None Include="dbo\Scripts\PopulateCourse.sql" />
+    <None Include="dbo\Scripts\PopulatePrereq.sql" />
+    <None Include="dbo\Scripts\PopulateSection.sql" />
+    <None Include="dbo\Scripts\PopulateTakes.sql" />
   </ItemGroup>
 </Project>
