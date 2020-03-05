@@ -43,12 +43,9 @@
             this.add_course_label = new System.Windows.Forms.Label();
             this.credits_label = new System.Windows.Forms.Label();
             this.credits_input = new System.Windows.Forms.NumericUpDown();
-            this.year_label = new System.Windows.Forms.Label();
-            this.year_input = new System.Windows.Forms.NumericUpDown();
             this.sucess_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.number_input)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.credits_input)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.year_input)).BeginInit();
             this.SuspendLayout();
             // 
             // submit_button
@@ -200,29 +197,6 @@
             0,
             0});
             // 
-            // year_label
-            // 
-            this.year_label.AutoSize = true;
-            this.year_label.Location = new System.Drawing.Point(400, 482);
-            this.year_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.year_label.Name = "year_label";
-            this.year_label.Size = new System.Drawing.Size(43, 20);
-            this.year_label.TabIndex = 57;
-            this.year_label.Text = "Year";
-            // 
-            // year_input
-            // 
-            this.year_input.Location = new System.Drawing.Point(405, 506);
-            this.year_input.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.year_input.Name = "year_input";
-            this.year_input.Size = new System.Drawing.Size(182, 26);
-            this.year_input.TabIndex = 56;
-            this.year_input.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // sucess_label
             // 
             this.sucess_label.AutoSize = true;
@@ -239,8 +213,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(988, 709);
-            this.Controls.Add(this.year_label);
-            this.Controls.Add(this.year_input);
             this.Controls.Add(this.credits_label);
             this.Controls.Add(this.credits_input);
             this.Controls.Add(this.sucess_label);
@@ -263,7 +235,6 @@
             this.Load += new System.EventHandler(this.CreateCourse_Load);
             ((System.ComponentModel.ISupportInitialize)(this.number_input)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.credits_input)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.year_input)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,8 +256,6 @@
         private System.Windows.Forms.Label add_course_label;
         private System.Windows.Forms.Label credits_label;
         private System.Windows.Forms.NumericUpDown credits_input;
-        private System.Windows.Forms.Label year_label;
-        private System.Windows.Forms.NumericUpDown year_input;
         private System.Windows.Forms.Label sucess_label;
     }
 }

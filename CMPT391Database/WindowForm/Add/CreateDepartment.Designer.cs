@@ -75,6 +75,7 @@
             this.DepartmentCombobox.Size = new System.Drawing.Size(212, 28);
             this.DepartmentCombobox.TabIndex = 26;
             this.DepartmentCombobox.ValueMember = "Dept_Name";
+            this.DepartmentCombobox.SelectedIndexChanged += new System.EventHandler(this.DepartmentCombobox_SelectedIndexChanged);
             // 
             // instructor_label
             // 
@@ -137,6 +138,7 @@
             this.add_dept_button.TabIndex = 19;
             this.add_dept_button.Text = "Add Department";
             this.add_dept_button.UseVisualStyleBackColor = true;
+            this.add_dept_button.Click += new System.EventHandler(this.add_dept_button_Click);
             // 
             // add_dept_label
             // 
