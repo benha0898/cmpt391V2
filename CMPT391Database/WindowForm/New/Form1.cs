@@ -40,8 +40,9 @@ namespace WindowForm.New
                 reader.Close();
             }
             con.Close();
-
-
+            term_dropdown.Items.Add("Fall " + DateTime.Now.Year.ToString());
+            term_dropdown.Items.Add("Spring/Summer " + DateTime.Now.Year.ToString());
+            term_dropdown.Items.Add("Winter " + DateTime.Now.Year.ToString());
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -92,6 +93,7 @@ namespace WindowForm.New
             SqlDataReader reader = command.ExecuteReader();
             try
             {
+                course_list.Clear();
                 while (reader.Read())
                 {
                     course_list.Items.Add(course_dropdown.SelectedItem.ToString() + " " + reader["level"].ToString());
