@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.student_id = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.term_dropdown = new System.Windows.Forms.ComboBox();
             this.course_dropdown = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,22 +53,22 @@
             this.student_id.TabIndex = 0;
             this.student_id.Text = "Student ID";
             // 
-            // comboBox1
+            // term_dropdown
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(25, 77);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(102, 21);
-            this.comboBox1.TabIndex = 1;
+            this.term_dropdown.FormattingEnabled = true;
+            this.term_dropdown.Location = new System.Drawing.Point(25, 77);
+            this.term_dropdown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.term_dropdown.Name = "term_dropdown";
+            this.term_dropdown.Size = new System.Drawing.Size(135, 21);
+            this.term_dropdown.TabIndex = 1;
             // 
             // course_dropdown
             // 
             this.course_dropdown.FormattingEnabled = true;
-            this.course_dropdown.Location = new System.Drawing.Point(164, 77);
+            this.course_dropdown.Location = new System.Drawing.Point(176, 77);
             this.course_dropdown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.course_dropdown.Name = "course_dropdown";
-            this.course_dropdown.Size = new System.Drawing.Size(96, 21);
+            this.course_dropdown.Size = new System.Drawing.Size(119, 21);
             this.course_dropdown.TabIndex = 2;
             this.course_dropdown.SelectedIndexChanged += new System.EventHandler(this.course_dropdown_SelectedIndexChanged);
             // 
@@ -85,7 +85,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(161, 62);
+            this.label2.Location = new System.Drawing.Point(173, 62);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 13);
@@ -151,7 +151,7 @@
             this.studentid_input.Location = new System.Drawing.Point(94, 25);
             this.studentid_input.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.studentid_input.Name = "studentid_input";
-            this.studentid_input.Size = new System.Drawing.Size(88, 20);
+            this.studentid_input.Size = new System.Drawing.Size(127, 20);
             this.studentid_input.TabIndex = 10;
             this.studentid_input.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
@@ -192,7 +192,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.course_dropdown);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.term_dropdown);
             this.Controls.Add(this.student_id);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
@@ -206,7 +206,7 @@
         #endregion
 
         private System.Windows.Forms.Label student_id;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox term_dropdown;
         private System.Windows.Forms.ComboBox course_dropdown;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
