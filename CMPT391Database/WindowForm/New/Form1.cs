@@ -56,8 +56,11 @@ namespace WindowForm.New
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-
+            term_dropdown.Enabled = false;
+            course_dropdown.Enabled = false;
+            add_button.Enabled = false;
+            remove_button.Enabled = false;
+            submit_button.Enabled = false;
         }
 
 
@@ -79,6 +82,7 @@ namespace WindowForm.New
                     //Console.WriteLine("{0}\t{1}", reader.GetInt32(0),
                     //    reader.GetString(1));
                 }
+                term_dropdown.Enabled = true;
 
                 // Print to console all the courses this student has taken
                 /*
@@ -110,6 +114,13 @@ namespace WindowForm.New
             con.Close();
         }
 
+        private void term_dropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string[] split_var = term_dropdown.SelectedItem.ToString().Split();
+            term = split_var[0];
+            if (!course_dropdown.Enabled)
+                course_dropdown.Enabled = true;
+        }
 
         private void course_dropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -153,38 +164,15 @@ namespace WindowForm.New
 
         }
 
-
-        private void add_button_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine(section_list.SelectedItems[0].Text);
-            confirm_sectionlist.Items.Add(section_list.SelectedItems[0].Text);
-            section_list.SelectedItems[0].Remove();
-
-
-        }
-
-        private void remove_button_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine(confirm_sectionlist.SelectedItems[0].Text);
-            section_list.Items.Add(confirm_sectionlist.SelectedItems[0].Text);
-            confirm_sectionlist.SelectedItems[0].Remove();
-        }
-
         private void course_list_Click(object sender, EventArgs e)
         {
-            string[] split_var;
- 
             if (course_list.SelectedItems.Count > 0)
             {
-                course_id = (int) course_list.SelectedItems[0].Tag;
+                course_id = (int)course_list.SelectedItems[0].Tag;
                 Console.WriteLine("Course_Id: " + course_id.ToString());
             }
 
-            split_var = term_dropdown.SelectedItem.ToString().Split();
-            term = split_var[0];
-
-
-            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True,MultipleActiveResultSets=True");
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True;MultipleActiveResultSets=True");
             con.Open();
 
             string queryString = @"
@@ -205,14 +193,32 @@ namespace WindowForm.New
                 while (reader.Read())
                 {
                     // For each section, check for vacancy
-                    string queryString2 = @"
-                        ";
-                    ListViewItem section = new ListViewItem();
-                    section.Text = ("Section " + reader["id"].ToString());
-                    // TODO -- Check for vacancy. Section is green if open, grey if full.
-                    section.ForeColor = Color.Green;
-
-                    section_list.Items.Add(section);
+                    string queryString2 = "SELECT vacancies FROM section WHERE id = @id";
+                    SqlCommand command2 = new SqlCommand(queryString2, con);
+                    command2.Parameters.AddWithValue("@id", reader["id"].ToString());
+                    SqlDataReader reader2 = command2.ExecuteReader();
+                    try
+                    {
+                        ListViewItem section = new ListViewItem();
+                        section.Text = ("Section " + reader["id"].ToString());
+                        while (reader2.Read())
+                        {
+                            if ((int)reader2["vacancies"] <= 0)
+                            {
+                                section.ForeColor = Color.Red;
+                            }
+                            else
+                            {
+                                section.ForeColor = Color.Green;
+                            }
+                        }
+                        section_list.Items.Add(section);
+                    }
+                    finally
+                    {
+                        // Close reader
+                        reader2.Close();
+                    }
                 }
             }
             finally
@@ -221,6 +227,45 @@ namespace WindowForm.New
                 reader.Close();
             }
             con.Close();
+        }
+
+        private void add_button_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(section_list.SelectedItems[0].Text);
+            ListViewItem item = section_list.SelectedItems[0];
+            section_list.SelectedItems[0].Remove();
+            item.Selected = false;
+            confirm_sectionlist.Items.Add(item);
+            
+            add_button.Enabled = false;
+        }
+
+        private void remove_button_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(confirm_sectionlist.SelectedItems[0].Text);
+            ListViewItem item = confirm_sectionlist.SelectedItems[0];
+            confirm_sectionlist.SelectedItems[0].Remove();
+            item.Selected = false;
+            section_list.Items.Add(item);
+            section_list.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            
+            remove_button.Enabled = false;
+        }
+
+        private void section_list_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (section_list.SelectedItems.Count > 0)
+            {
+                if (section_list.SelectedItems[0].ForeColor == Color.Green)
+                    add_button.Enabled = true;
+                else
+                    add_button.Enabled = false;
+            }
+        }
+
+        private void confirm_sectionlist_MouseClick(object sender, MouseEventArgs e)
+        {
+            remove_button.Enabled = true;
         }
     }
 }

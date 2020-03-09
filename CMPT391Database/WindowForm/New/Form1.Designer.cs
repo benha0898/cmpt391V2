@@ -62,6 +62,7 @@
             this.term_dropdown.Name = "term_dropdown";
             this.term_dropdown.Size = new System.Drawing.Size(135, 21);
             this.term_dropdown.TabIndex = 1;
+            this.term_dropdown.SelectedIndexChanged += new System.EventHandler(this.term_dropdown_SelectedIndexChanged);
             // 
             // course_dropdown
             // 
@@ -115,6 +116,7 @@
             this.confirm_sectionlist.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.confirm_sectionlist.TabIndex = 6;
             this.confirm_sectionlist.UseCompatibleStateImageBehavior = false;
+            this.confirm_sectionlist.MouseClick += new System.Windows.Forms.MouseEventHandler(this.confirm_sectionlist_MouseClick);
             // 
             // add_button
             // 
@@ -186,6 +188,7 @@
             this.section_list.Size = new System.Drawing.Size(230, 289);
             this.section_list.TabIndex = 13;
             this.section_list.UseCompatibleStateImageBehavior = false;
+            this.section_list.MouseClick += new System.Windows.Forms.MouseEventHandler(this.section_list_MouseClick);
             // 
             // Form1
             // 
