@@ -2,6 +2,8 @@
 DELETE from dbo.takes;
 DBCC CHECKIDENT('dbo.takes', RESEED, 0);
 
+SET NOCOUNT ON
+
 Declare @StudentCount int
 Declare @TotalStudents int
 Declare @CourseCount int
@@ -9,8 +11,6 @@ Declare @TotalCourses int
 Declare @StudentId int
 Declare @SectionId int
 Declare @CourseId int
-Declare @CourseVar nchar(5)
-Declare @LevelVar int
 
 SET @TotalCourses = 30
 SELECT @TotalStudents = COUNT(*) FROM dbo.student;
@@ -29,38 +29,26 @@ Begin
     BEGIN
         SELECT TOP 1 @SectionId = id, @CourseId = course_id FROM section ORDER BY NEWID();
         
-        /* Check for Prereqs */
-        IF @CourseId IN (
-            select distinct course_id
-            from section s
-            where not exists (
-	            select *
-	            from prereq p, section s2
-	            where
-		            p.course = s.course_id
-		        and p.prereq = s2.course_id
-		        and (
-                    (s2.id not in (
-			            select section_id
-                        from takes
-                        where student_id = @StudentId))
-                    or
-                    (s2.id in (
-                        select section_id
-                        from takes
-                        where student_id=@StudentId)
-                    and ((s2.year > s.year)
-                        or (s2.year = s.year and s.term <> 'Fall'))
-                    )
-                    )
-                )
-            and not exists (
-                select *
-                from takes
-                where student_id = @StudentId and section_id = @SectionId))
+        -- Check for Prereqs in 2 steps
+        -- 1. If there's no prereq that student hasn't completed
+        IF NOT EXISTS (
+            SELECT p.prereq
+            FROM prereq p, section s
+            WHERE   p.course = @CourseId AND
+                    s.id IN (
+                        SELECT s.id FROM takes t
+                        WHERE   t.student_id = @StudentId AND
+                                s.id = t.section_id) AND
+                    p.prereq = s.id)
+        -- 2. And if the course hasn't been taken already
+        AND NOT EXISTS (
+            SELECT section_id
+            FROM takes
+            WHERE   student_id = @StudentId AND
+                    section_id = @SectionId)
         BEGIN
-            Insert Into takes (student_id, section_id, grade)
-            values (
+            INSERT INTO takes (student_id, section_id, grade)
+            VALUES (
                 @StudentId,
                 @SectionId,
                 ROUND(RAND()*(4-1)+1,1)); -- GPA From 1.0 to 4.0

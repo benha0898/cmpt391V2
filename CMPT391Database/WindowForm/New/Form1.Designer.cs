@@ -41,6 +41,7 @@
             this.studentid_input = new System.Windows.Forms.TextBox();
             this.fullname_label = new System.Windows.Forms.Label();
             this.student_label = new System.Windows.Forms.Label();
+            this.section_listview = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // student_id
@@ -57,7 +58,7 @@
             // 
             this.term_dropdown.FormattingEnabled = true;
             this.term_dropdown.Location = new System.Drawing.Point(25, 77);
-            this.term_dropdown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.term_dropdown.Margin = new System.Windows.Forms.Padding(2);
             this.term_dropdown.Name = "term_dropdown";
             this.term_dropdown.Size = new System.Drawing.Size(135, 21);
             this.term_dropdown.TabIndex = 1;
@@ -66,7 +67,7 @@
             // 
             this.course_dropdown.FormattingEnabled = true;
             this.course_dropdown.Location = new System.Drawing.Point(176, 77);
-            this.course_dropdown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.course_dropdown.Margin = new System.Windows.Forms.Padding(2);
             this.course_dropdown.Name = "course_dropdown";
             this.course_dropdown.Size = new System.Drawing.Size(119, 21);
             this.course_dropdown.TabIndex = 2;
@@ -96,18 +97,19 @@
             // 
             this.course_list.HideSelection = false;
             this.course_list.Location = new System.Drawing.Point(25, 125);
-            this.course_list.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.course_list.Margin = new System.Windows.Forms.Padding(2);
             this.course_list.Name = "course_list";
             this.course_list.Size = new System.Drawing.Size(235, 289);
             this.course_list.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.course_list.TabIndex = 5;
             this.course_list.UseCompatibleStateImageBehavior = false;
+            this.course_list.SelectedIndexChanged += new System.EventHandler(this.course_list_SelectedIndexChanged);
             // 
             // confirm_courselist
             // 
             this.confirm_courselist.HideSelection = false;
-            this.confirm_courselist.Location = new System.Drawing.Point(341, 125);
-            this.confirm_courselist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.confirm_courselist.Location = new System.Drawing.Point(684, 125);
+            this.confirm_courselist.Margin = new System.Windows.Forms.Padding(2);
             this.confirm_courselist.Name = "confirm_courselist";
             this.confirm_courselist.Size = new System.Drawing.Size(235, 289);
             this.confirm_courselist.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -116,8 +118,8 @@
             // 
             // add_button
             // 
-            this.add_button.Location = new System.Drawing.Point(279, 242);
-            this.add_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.add_button.Location = new System.Drawing.Point(622, 253);
+            this.add_button.Margin = new System.Windows.Forms.Padding(2);
             this.add_button.Name = "add_button";
             this.add_button.Size = new System.Drawing.Size(50, 21);
             this.add_button.TabIndex = 7;
@@ -127,8 +129,8 @@
             // 
             // remove_button
             // 
-            this.remove_button.Location = new System.Drawing.Point(279, 281);
-            this.remove_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.remove_button.Location = new System.Drawing.Point(622, 292);
+            this.remove_button.Margin = new System.Windows.Forms.Padding(2);
             this.remove_button.Name = "remove_button";
             this.remove_button.Size = new System.Drawing.Size(50, 21);
             this.remove_button.TabIndex = 8;
@@ -138,8 +140,8 @@
             // 
             // submit_button
             // 
-            this.submit_button.Location = new System.Drawing.Point(341, 418);
-            this.submit_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.submit_button.Location = new System.Drawing.Point(684, 429);
+            this.submit_button.Margin = new System.Windows.Forms.Padding(2);
             this.submit_button.Name = "submit_button";
             this.submit_button.Size = new System.Drawing.Size(89, 21);
             this.submit_button.TabIndex = 9;
@@ -149,7 +151,7 @@
             // studentid_input
             // 
             this.studentid_input.Location = new System.Drawing.Point(94, 25);
-            this.studentid_input.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.studentid_input.Margin = new System.Windows.Forms.Padding(2);
             this.studentid_input.Name = "studentid_input";
             this.studentid_input.Size = new System.Drawing.Size(127, 20);
             this.studentid_input.TabIndex = 10;
@@ -176,11 +178,21 @@
             this.student_label.Size = new System.Drawing.Size(0, 20);
             this.student_label.TabIndex = 12;
             // 
+            // section_listview
+            // 
+            this.section_listview.HideSelection = false;
+            this.section_listview.Location = new System.Drawing.Point(279, 125);
+            this.section_listview.Name = "section_listview";
+            this.section_listview.Size = new System.Drawing.Size(285, 289);
+            this.section_listview.TabIndex = 13;
+            this.section_listview.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 497);
+            this.ClientSize = new System.Drawing.Size(993, 497);
+            this.Controls.Add(this.section_listview);
             this.Controls.Add(this.student_label);
             this.Controls.Add(this.fullname_label);
             this.Controls.Add(this.studentid_input);
@@ -194,7 +206,7 @@
             this.Controls.Add(this.course_dropdown);
             this.Controls.Add(this.term_dropdown);
             this.Controls.Add(this.student_id);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -218,5 +230,6 @@
         private System.Windows.Forms.TextBox studentid_input;
         private System.Windows.Forms.Label fullname_label;
         private System.Windows.Forms.Label student_label;
+        private System.Windows.Forms.ListView section_listview;
     }
 }
