@@ -4,8 +4,8 @@
 	student_id INT NULL,
 	section_id INT NULL,
 	grade FLOAT NULL,
-	CONSTRAINT fk_takes_student FOREIGN KEY (student_id) REFERENCES student (id),
-	CONSTRAINT fk_takes_section FOREIGN KEY (section_id) REFERENCES section (id),
+	CONSTRAINT fk_takes_student FOREIGN KEY (student_id) REFERENCES student (id) ON DELETE CASCADE,
+	CONSTRAINT fk_takes_section FOREIGN KEY (section_id) REFERENCES section (id) ON DELETE CASCADE,
 )
 
 GO
