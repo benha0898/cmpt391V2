@@ -81,6 +81,7 @@ namespace WindowForm.New
                 }
 
                 // Print to console all the courses this student has taken
+                /*
                 string queryString2 = @"
                     SELECT c.subject as subject, c.level as level
                     FROM takes t, section s, course c
@@ -99,6 +100,7 @@ namespace WindowForm.New
                     }
                 }
                 reader2.Close();
+                */
             }
             else
             {
@@ -134,8 +136,6 @@ namespace WindowForm.New
                     ListViewItem course = new ListViewItem();
                     course.Tag = reader["id"];
                     course.Text = (course_dropdown.SelectedItem.ToString() + " " + reader["level"].ToString());
-                    // TOTO -- Check for prereqs. Course is green if all prereqs are met; otherwise grey.
-                    course.ForeColor = Color.Green;
 
                     course_list.Items.Add(course);
                     
@@ -184,7 +184,7 @@ namespace WindowForm.New
             term = split_var[0];
 
 
-            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True");
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True,MultipleActiveResultSets=True");
             con.Open();
 
             string queryString = @"
@@ -204,9 +204,12 @@ namespace WindowForm.New
                 section_list.Clear();
                 while (reader.Read())
                 {
+                    // For each section, check for vacancy
+                    string queryString2 = @"
+                        ";
                     ListViewItem section = new ListViewItem();
                     section.Text = ("Section " + reader["id"].ToString());
-                    // TODO -- Check for vacancy. Section is green if not full, grey if full.
+                    // TODO -- Check for vacancy. Section is green if open, grey if full.
                     section.ForeColor = Color.Green;
 
                     section_list.Items.Add(section);
