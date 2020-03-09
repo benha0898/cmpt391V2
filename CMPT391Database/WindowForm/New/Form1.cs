@@ -87,7 +87,7 @@ namespace WindowForm.New
             SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True");
             con.Open();
 
-            string queryString = "SELECT level, id FROM course WHERE subject=@course";
+            string queryString = "SELECT level FROM course WHERE subject=@course";
             SqlCommand command = new SqlCommand(queryString, con);
             command.Parameters.AddWithValue("@course", course_dropdown.SelectedItem.ToString());
             SqlDataReader reader = command.ExecuteReader();
@@ -96,12 +96,7 @@ namespace WindowForm.New
                 course_list.Clear();
                 while (reader.Read())
                 {
-                    //course_list.Items.Add(course_dropdown.SelectedItem.ToString() + " " + reader["level"].ToString());
-                    //course_list.Items.Add(reader["id"].ToString());
-                    ListViewItem item1 = new ListViewItem(course_dropdown.SelectedItem.ToString() + " " + reader["level"].ToString(), 0);
-                    ListViewItem item2 = new ListViewItem(reader["id"].ToString(), 1);
-
-                    course_list.Items.AddRange(new ListViewItem[] {item2, item1});
+                    course_list.Items.Add(course_dropdown.SelectedItem.ToString() + " " + reader["level"].ToString());
                     //need to do a another query here to check if student has required course in takes and if he does then
                     // it will be green color or red if not. Green indicates he is available to take this class and red means he cannot
                     //atm all items will be green
@@ -133,40 +128,6 @@ namespace WindowForm.New
             Console.WriteLine(confirm_courselist.SelectedItems[0].Text);
             course_list.Items.Add(confirm_courselist.SelectedItems[0].Text);
             confirm_courselist.SelectedItems[0].Remove();
-        }
-
-        private void course_list_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine(course_list.SelectedItems[0].Text);
-            /*
-            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True");
-            con.Open();
-
-            string queryString = "SELECT id FROM course WHERE subject=@course";
-            SqlCommand command = new SqlCommand(queryString, con);
-            command.Parameters.AddWithValue("@course", course_dropdown.SelectedItem.ToString());
-            SqlDataReader reader = command.ExecuteReader();
-            try
-            {
-                course_list.Clear();
-                while (reader.Read())
-                {
-                    course_list.Items.Add(course_dropdown.SelectedItem.ToString() + " " + reader["level"].ToString());
-                    //need to do a another query here to check if student has required course in takes and if he does then
-                    // it will be green color or red if not. Green indicates he is available to take this class and red means he cannot
-                    //atm all items will be green
-                    course_list.ForeColor = Color.Green;
-                }
-            }
-            finally
-            {
-                // Always call Close when done reading.
-                reader.Close();
-            }
-            con.Close();
-            */
-
-
         }
     }
 }

@@ -10,7 +10,3 @@
 	CONSTRAINT fk_section_time FOREIGN KEY (time_id) REFERENCES time (id),
 	CONSTRAINT fk_section_course FOREIGN KEY (course_id) REFERENCES course (id)
 )
-
-GO
-
-CREATE INDEX [IX_section_course_id] ON [dbo].[section] ([course_id])
