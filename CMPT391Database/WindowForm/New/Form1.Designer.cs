@@ -46,80 +46,73 @@
             // student_id
             // 
             this.student_id.AutoSize = true;
-            this.student_id.Location = new System.Drawing.Point(23, 29);
-            this.student_id.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.student_id.Location = new System.Drawing.Point(34, 45);
             this.student_id.Name = "student_id";
-            this.student_id.Size = new System.Drawing.Size(58, 13);
+            this.student_id.Size = new System.Drawing.Size(87, 20);
             this.student_id.TabIndex = 0;
             this.student_id.Text = "Student ID";
             // 
             // term_dropdown
             // 
             this.term_dropdown.FormattingEnabled = true;
-            this.term_dropdown.Location = new System.Drawing.Point(25, 77);
-            this.term_dropdown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.term_dropdown.Location = new System.Drawing.Point(38, 118);
             this.term_dropdown.Name = "term_dropdown";
-            this.term_dropdown.Size = new System.Drawing.Size(135, 21);
+            this.term_dropdown.Size = new System.Drawing.Size(200, 28);
             this.term_dropdown.TabIndex = 1;
             // 
             // course_dropdown
             // 
             this.course_dropdown.FormattingEnabled = true;
-            this.course_dropdown.Location = new System.Drawing.Point(176, 77);
-            this.course_dropdown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.course_dropdown.Location = new System.Drawing.Point(264, 118);
             this.course_dropdown.Name = "course_dropdown";
-            this.course_dropdown.Size = new System.Drawing.Size(119, 21);
+            this.course_dropdown.Size = new System.Drawing.Size(176, 28);
             this.course_dropdown.TabIndex = 2;
             this.course_dropdown.SelectedIndexChanged += new System.EventHandler(this.course_dropdown_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 62);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(34, 95);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.Size = new System.Drawing.Size(118, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Term/Semester";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(173, 62);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(260, 95);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 13);
+            this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Course List";
             // 
             // course_list
             // 
             this.course_list.HideSelection = false;
-            this.course_list.Location = new System.Drawing.Point(25, 125);
-            this.course_list.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.course_list.Location = new System.Drawing.Point(38, 192);
             this.course_list.Name = "course_list";
-            this.course_list.Size = new System.Drawing.Size(235, 289);
+            this.course_list.Size = new System.Drawing.Size(350, 442);
             this.course_list.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.course_list.TabIndex = 5;
             this.course_list.UseCompatibleStateImageBehavior = false;
+            this.course_list.SelectedIndexChanged += new System.EventHandler(this.course_list_DoubleClick);
             // 
             // confirm_courselist
             // 
             this.confirm_courselist.HideSelection = false;
-            this.confirm_courselist.Location = new System.Drawing.Point(341, 125);
-            this.confirm_courselist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.confirm_courselist.Location = new System.Drawing.Point(512, 192);
             this.confirm_courselist.Name = "confirm_courselist";
-            this.confirm_courselist.Size = new System.Drawing.Size(235, 289);
+            this.confirm_courselist.Size = new System.Drawing.Size(350, 442);
             this.confirm_courselist.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.confirm_courselist.TabIndex = 6;
             this.confirm_courselist.UseCompatibleStateImageBehavior = false;
             // 
             // add_button
             // 
-            this.add_button.Location = new System.Drawing.Point(279, 242);
-            this.add_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.add_button.Location = new System.Drawing.Point(418, 372);
             this.add_button.Name = "add_button";
-            this.add_button.Size = new System.Drawing.Size(50, 21);
+            this.add_button.Size = new System.Drawing.Size(75, 32);
             this.add_button.TabIndex = 7;
             this.add_button.Text = "->";
             this.add_button.UseVisualStyleBackColor = true;
@@ -127,10 +120,9 @@
             // 
             // remove_button
             // 
-            this.remove_button.Location = new System.Drawing.Point(279, 281);
-            this.remove_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.remove_button.Location = new System.Drawing.Point(418, 432);
             this.remove_button.Name = "remove_button";
-            this.remove_button.Size = new System.Drawing.Size(50, 21);
+            this.remove_button.Size = new System.Drawing.Size(75, 32);
             this.remove_button.TabIndex = 8;
             this.remove_button.Text = "<-";
             this.remove_button.UseVisualStyleBackColor = true;
@@ -138,20 +130,18 @@
             // 
             // submit_button
             // 
-            this.submit_button.Location = new System.Drawing.Point(341, 418);
-            this.submit_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.submit_button.Location = new System.Drawing.Point(512, 643);
             this.submit_button.Name = "submit_button";
-            this.submit_button.Size = new System.Drawing.Size(89, 21);
+            this.submit_button.Size = new System.Drawing.Size(134, 32);
             this.submit_button.TabIndex = 9;
             this.submit_button.Text = "Submit";
             this.submit_button.UseVisualStyleBackColor = true;
             // 
             // studentid_input
             // 
-            this.studentid_input.Location = new System.Drawing.Point(94, 25);
-            this.studentid_input.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.studentid_input.Location = new System.Drawing.Point(141, 38);
             this.studentid_input.Name = "studentid_input";
-            this.studentid_input.Size = new System.Drawing.Size(127, 20);
+            this.studentid_input.Size = new System.Drawing.Size(188, 26);
             this.studentid_input.TabIndex = 10;
             this.studentid_input.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
@@ -159,10 +149,9 @@
             // 
             this.fullname_label.AutoSize = true;
             this.fullname_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullname_label.Location = new System.Drawing.Point(275, 25);
-            this.fullname_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.fullname_label.Location = new System.Drawing.Point(412, 38);
             this.fullname_label.Name = "fullname_label";
-            this.fullname_label.Size = new System.Drawing.Size(74, 20);
+            this.fullname_label.Size = new System.Drawing.Size(107, 29);
             this.fullname_label.TabIndex = 11;
             this.fullname_label.Text = "Student: ";
             // 
@@ -170,17 +159,16 @@
             // 
             this.student_label.AutoSize = true;
             this.student_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.student_label.Location = new System.Drawing.Point(353, 24);
-            this.student_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.student_label.Location = new System.Drawing.Point(530, 37);
             this.student_label.Name = "student_label";
-            this.student_label.Size = new System.Drawing.Size(0, 20);
+            this.student_label.Size = new System.Drawing.Size(0, 29);
             this.student_label.TabIndex = 12;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 497);
+            this.ClientSize = new System.Drawing.Size(956, 765);
             this.Controls.Add(this.student_label);
             this.Controls.Add(this.fullname_label);
             this.Controls.Add(this.studentid_input);
@@ -194,7 +182,6 @@
             this.Controls.Add(this.course_dropdown);
             this.Controls.Add(this.term_dropdown);
             this.Controls.Add(this.student_id);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

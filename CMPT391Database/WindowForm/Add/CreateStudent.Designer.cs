@@ -88,6 +88,7 @@
             this.first_name_input.Name = "first_name_input";
             this.first_name_input.Size = new System.Drawing.Size(148, 26);
             this.first_name_input.TabIndex = 2;
+
             // 
             // first_name_label
             // 
