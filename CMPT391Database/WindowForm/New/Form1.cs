@@ -14,10 +14,10 @@ namespace WindowForm.New
 {
     public partial class Form1 : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True");
-        string[] item;
-        string subject = " ";
-        string level = " ";
+        int course_id;
+        int section_id;
+        string term = " ";
+        int year = DateTime.Now.Year;
         public Form1()
         {
             InitializeComponent();
@@ -43,14 +43,15 @@ namespace WindowForm.New
                 reader.Close();
             }
             con.Close();
+            /*
             term_dropdown.Items.Add("Fall").ToString();
             term_dropdown.Items.Add("Spring/Summer").ToString();
             term_dropdown.Items.Add("Winter").ToString();
-            /*
-             term_dropdown.Items.Add("Fall " + DateTime.Now.Year.ToString());
-            term_dropdown.Items.Add("Spring/Summer " + DateTime.Now.Year.ToString());
-            term_dropdown.Items.Add("Winter " + DateTime.Now.Year.ToString());
-             */
+            */
+            
+            term_dropdown.Items.Add("Fall " + year.ToString());
+            term_dropdown.Items.Add("Winter " + year.ToString());
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -60,10 +61,10 @@ namespace WindowForm.New
         }
 
 
-        private void textBox1_Leave(object sender, EventArgs e)
+        private void studentid_input_Leave(object sender, EventArgs e)
         {
 
-            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True");
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True;MultipleActiveResultSets=True");
             con.Open();
 
             string queryString = "SELECT first_name + ' ' + last_name AS full_name FROM student WHERE id=@id";
@@ -78,6 +79,26 @@ namespace WindowForm.New
                     //Console.WriteLine("{0}\t{1}", reader.GetInt32(0),
                     //    reader.GetString(1));
                 }
+
+                // Print to console all the courses this student has taken
+                string queryString2 = @"
+                    SELECT c.subject as subject, c.level as level
+                    FROM takes t, section s, course c
+                    WHERE   t.student_id = @student_id AND
+                            t.section_id = s.id AND
+                            s.course_id = c.id";
+                SqlCommand command2 = new SqlCommand(queryString2, con);
+                command2.Parameters.AddWithValue("@student_id", studentid_input.Text);
+                SqlDataReader reader2 = command2.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    Console.WriteLine("Courses student has taken: ");
+                    while (reader2.Read())
+                    {
+                        Console.WriteLine(reader2["subject"] + " " + reader2["level"].ToString());
+                    }
+                }
+                reader2.Close();
             }
             else
             {
@@ -98,9 +119,11 @@ namespace WindowForm.New
 
             //string queryString = "SELECT course.level, section.term FROM course LEFT JOIN section ON course.id = section.course_id WHERE course.subject=@course AND section.term = @term";
             //query now retrieves by term by matching the fall,winter,summer/spring
-            string queryString = "SELECT DISTINCT p.* FROM( SELECT level, term FROM course RIGHT JOIN section on course.id = section.course_id where course.subject = @course and section.term = @term)p; ";
+            string queryString = @"
+                SELECT id, level
+                FROM course
+                WHERE course.subject = @course;";
             SqlCommand command = new SqlCommand(queryString, con);
-            command.Parameters.AddWithValue("@term", term_dropdown.SelectedItem.ToString());
             command.Parameters.AddWithValue("@course", course_dropdown.SelectedItem.ToString());
             SqlDataReader reader = command.ExecuteReader();
             try
@@ -108,13 +131,15 @@ namespace WindowForm.New
                 course_list.Clear();
                 while (reader.Read())
                 {
-                    course_list.Items.Add(course_dropdown.SelectedItem.ToString() + " " + reader["level"].ToString());
-                    //need to do a another query here to check if student has required course in takes and if he does then
-                    // it will be green color or red if not. Green indicates he is available to take this class and red means he cannot
-                    //atm all items will be green
-                    course_list.ForeColor = Color.Green;
-                    //course_list.Focus();
+                    ListViewItem course = new ListViewItem();
+                    course.Tag = reader["id"];
+                    course.Text = (course_dropdown.SelectedItem.ToString() + " " + reader["level"].ToString());
+                    // TOTO -- Check for prereqs. Course is green if all prereqs are met; otherwise grey.
+                    course.ForeColor = Color.Green;
 
+                    course_list.Items.Add(course);
+                    
+                    //course_list.Focus();
                 }
 
             }
@@ -131,75 +156,61 @@ namespace WindowForm.New
 
         private void add_button_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(course_list.SelectedItems[0].Text);
-            confirm_courselist.Items.Add(course_list.SelectedItems[0].Text);
-            //will have to check pre req here
-            course_list.SelectedItems[0].Remove();
+            Console.WriteLine(section_list.SelectedItems[0].Text);
+            confirm_sectionlist.Items.Add(section_list.SelectedItems[0].Text);
+            section_list.SelectedItems[0].Remove();
 
 
         }
 
         private void remove_button_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(confirm_courselist.SelectedItems[0].Text);
-            course_list.Items.Add(confirm_courselist.SelectedItems[0].Text);
-            confirm_courselist.SelectedItems[0].Remove();
+            Console.WriteLine(confirm_sectionlist.SelectedItems[0].Text);
+            section_list.Items.Add(confirm_sectionlist.SelectedItems[0].Text);
+            confirm_sectionlist.SelectedItems[0].Remove();
         }
 
-        private void course_list_DoubleClick(object sender, EventArgs e)
+        private void course_list_Click(object sender, EventArgs e)
         {
-
-            int index = 0;
-            
-            string var;
-            /* if (course_list.SelectedItems.Count > 0)
-             {
-                 Console.WriteLine(course_list.SelectedItems[0].SubItems[0].Text);
-             }*/
-
-            if (index >= 0) {
-                if (course_list.SelectedItems.Count > 0)
-                {
-                    var = course_list.SelectedItems[0].SubItems[0].Text;
-                    Console.WriteLine(var); //acct 101
-                    item = var.Split(' ');
-
-                    subject = item[0].ToString();
-                    level = item[7].ToString();
-                    
-                }
+            string[] split_var;
+ 
+            if (course_list.SelectedItems.Count > 0)
+            {
+                course_id = (int) course_list.SelectedItems[0].Tag;
+                Console.WriteLine("Course_Id: " + course_id.ToString());
             }
+
+            split_var = term_dropdown.SelectedItem.ToString().Split();
+            term = split_var[0];
+
+
             SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True");
             con.Open();
 
-            string queryString = "SELECT section.id FROM course LEFT JOIN section ON course.id = section.course_id WHERE course.subject=@subject AND course.level=@level";
+            string queryString = @"
+                SELECT section.id
+                FROM section
+                WHERE   course_id = @course_id AND
+                        term = @term AND
+                        year = @year";
 
             SqlCommand command = new SqlCommand(queryString, con);
-            command.Parameters.AddWithValue("@subject", subject);
-            command.Parameters.AddWithValue("@level", level);
+            command.Parameters.AddWithValue("@course_id", course_id);
+            command.Parameters.AddWithValue("@term", term);
+            command.Parameters.AddWithValue("@year", year);
             SqlDataReader reader = command.ExecuteReader();
             try
             {
-                
-                if (index == 0)
-                {   
-                    //remove the sections -----TODO----------------
-                    foreach (ListViewItem eachItem in course_list.SelectedItems)
-                    {
-                        Match match = Regex.Match(eachItem.Text, @"Section +", RegexOptions.IgnoreCase);
-                        if (match.Success)
-                        {
-                            course_list.Items.Remove(eachItem);
-                        }
-                    }
-                    while (reader.Read())
-                    {
+                section_list.Clear();
+                while (reader.Read())
+                {
+                    ListViewItem section = new ListViewItem();
+                    section.Text = ("Section " + reader["id"].ToString());
+                    // TODO -- Check for vacancy. Section is green if not full, grey if full.
+                    section.ForeColor = Color.Green;
 
-                        course_list.Items.Add("Section " + reader["id"].ToString());
-                    }
-                    index += 1;
+                    section_list.Items.Add(section);
                 }
-
             }
             finally
             {
