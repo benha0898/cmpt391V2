@@ -149,6 +149,7 @@
             this.submit_button.TabIndex = 9;
             this.submit_button.Text = "Submit";
             this.submit_button.UseVisualStyleBackColor = true;
+            this.submit_button.Click += new System.EventHandler(this.submit_button_Click);
             // 
             // studentid_input
             // 

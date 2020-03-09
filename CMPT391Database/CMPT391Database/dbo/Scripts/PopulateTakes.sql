@@ -39,7 +39,7 @@ Begin
                         SELECT s.id FROM takes t
                         WHERE   t.student_id = @StudentId AND
                                 s.id = t.section_id) AND
-                    p.prereq = s.id)
+                    p.prereq = s.course_id)
         -- 2. And if the course hasn't been taken already
         AND NOT EXISTS (
             SELECT section_id
