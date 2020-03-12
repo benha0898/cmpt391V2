@@ -23,7 +23,7 @@ SELECT @TotalStudents = MAX(id) FROM dbo.student;
 For each course, check to see if student has the prereqs */
 
 Set @StudentCount = 1
-While @StudentCount <= 1 --@TotalStudents
+While @StudentCount <= @TotalStudents
 Begin
     DELETE FROM @CoursesTaken;
     SELECT TOP 1 @StudentId = id FROM student WHERE id=@StudentCount;

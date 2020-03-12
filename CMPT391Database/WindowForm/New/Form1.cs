@@ -87,26 +87,28 @@ namespace WindowForm.New
                     term_dropdown.Enabled = true;
 
                     // Print to console all the courses this student has taken
-                    /*
+                    
                     string queryString2 = @"
-                        SELECT c.subject as subject, c.level as level
+                        SELECT c.subject as subject, c.level as level, s.id as section, s.term as term, s.year as year
                         FROM takes t, section s, course c
                         WHERE   t.student_id = @student_id AND
                                 t.section_id = s.id AND
-                                s.course_id = c.id;";
+                                s.course_id = c.id AND
+                                s.year = @year
+                        ORDER BY year DESC, term, subject, level, section;";
                     SqlCommand command2 = new SqlCommand(queryString2, con);
                     command2.Parameters.AddWithValue("@student_id", studentid_input.Text);
+                    command2.Parameters.AddWithValue("@year", year.ToString());
                     SqlDataReader reader2 = command2.ExecuteReader();
                     if (reader.HasRows)
                     {
                         Console.WriteLine("Courses student has taken: ");
                         while (reader2.Read())
                         {
-                            Console.WriteLine(reader2["subject"] + " " + reader2["level"].ToString());
+                            course_view.Items.Add(reader2["subject"] + " \t" + reader2["level"].ToString() + "\t" + reader2["section"].ToString() + "\t" + reader2["term"].ToString() + "\t" + reader2["year"].ToString());
                         }
                     }
                     reader2.Close();
-                    */
                 }
                 else
                 {
@@ -287,6 +289,10 @@ namespace WindowForm.New
         {
             SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True;MultipleActiveResultSets=True");
             con.Open();
+
+            SqlCommand command = con.CreateCommand();
+            SqlCommand command2 = con.CreateCommand();
+
             foreach (ListViewItem item in confirm_sectionlist.Items)
                 // Check if student has the prereqs, and if they are already enrolled
             {
@@ -296,7 +302,7 @@ namespace WindowForm.New
                         SELECT p.prereq
                         FROM prereq p, section s
                         WHERE   p.course = @CourseId AND
-                                s.id IN (
+                                s.id NOT IN (
                                     SELECT s.id FROM takes t
                                     WHERE   t.student_id = @StudentId AND
                                             s.id = t.section_id) AND
@@ -308,52 +314,82 @@ namespace WindowForm.New
                             WHERE   student_id = @StudentId AND
                                     section_id = @SectionId)
                         BEGIN
-                            /*
-                            INSERT INTO takes (student_id, section_id)
-                            VALUES (
-                                @StudentId,
-                                @SectionId);
-                            */
-                            SELECT '1' as result;
+                            SELECT 1 as result;
                         END
                         ELSE
                         BEGIN
-                            SELECT '2' as result;
+                            SELECT 2 as result;
                         END
                     END
                     ELSE
                     BEGIN
-                        SELECT '3' as result;
+                        SELECT 3 as result;
                     END";
-                SqlCommand command = new SqlCommand(queryString, con);
+                command = new SqlCommand(queryString, con);
                 command.Parameters.AddWithValue("@CourseId", ((int[])item.Tag)[0]);
                 command.Parameters.AddWithValue("@StudentId", studentid);
                 command.Parameters.AddWithValue("@SectionId", ((int[])item.Tag)[1]);
                 SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
+                reader.Read();
+                int result = (int)reader["result"];
+                reader.Close();
+                switch (result)
                 {
-                    reader.Read();
-                    switch (reader["result"])
-                    {
-                        case "1":
-                            MessageBox.Show("Success!");
+                    case 1:
+                        SqlTransaction trans;
+                        trans = con.BeginTransaction("add_course_trans");
+
+                        command2.Connection = con;
+                        command2.Transaction = trans;
+                        try
+                        {
+                            string queryString2 = @"
+                                INSERT INTO takes (student_id, section_id)
+                                VALUES (
+                                    @StudentId,
+                                    @SectionId);";
+
+
+                            command2 = new SqlCommand(queryString2, con, trans);
+                            command2.Parameters.AddWithValue("@StudentId", studentid);
+                            command2.Parameters.AddWithValue("@SectionId", ((int[])item.Tag)[1]);
+                            command2.ExecuteNonQuery();
+
+                            trans.Commit();
+
+                            MessageBox.Show("Success! Course Added.");
                             confirm_sectionlist.Clear();
-                            break;
-                        case "2":
-                            MessageBox.Show("FAIL - You are already enrolled in this class.");
-                            break;
-                        case "3":
-                            MessageBox.Show("FAIL - You don't have all the required prerequisites.");
-                            break;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("An error occurred. Please try again");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+                            Console.WriteLine(" Message: {0}", ex.Message);
+                        }
+                        try
+                        {
+                            trans.Rollback();
+                        }
+                        catch (Exception ex2)
+                        {
+                            Console.WriteLine("Commit Exception Type: {0}", ex2.GetType());
+                            Console.WriteLine(" Message: {0}", ex2.Message);
+                        }
+                        break;
+                    case 2:
+                        MessageBox.Show("FAIL - You are already enrolled in this class.");
+                        break;
+                    case 3:
+                        MessageBox.Show("FAIL - You don't have all the required prerequisites.");
+                        break;
                 }
                 reader.Close();
             }
             con.Close();
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

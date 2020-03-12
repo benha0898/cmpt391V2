@@ -42,6 +42,7 @@
             this.fullname_label = new System.Windows.Forms.Label();
             this.student_label = new System.Windows.Forms.Label();
             this.section_list = new System.Windows.Forms.ListView();
+            this.course_view = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // student_id
@@ -112,7 +113,7 @@
             this.confirm_sectionlist.Location = new System.Drawing.Point(572, 125);
             this.confirm_sectionlist.Margin = new System.Windows.Forms.Padding(2);
             this.confirm_sectionlist.Name = "confirm_sectionlist";
-            this.confirm_sectionlist.Size = new System.Drawing.Size(235, 289);
+            this.confirm_sectionlist.Size = new System.Drawing.Size(394, 289);
             this.confirm_sectionlist.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.confirm_sectionlist.TabIndex = 6;
             this.confirm_sectionlist.UseCompatibleStateImageBehavior = false;
@@ -191,11 +192,20 @@
             this.section_list.UseCompatibleStateImageBehavior = false;
             this.section_list.MouseClick += new System.Windows.Forms.MouseEventHandler(this.section_list_MouseClick);
             // 
+            // course_view
+            // 
+            this.course_view.FormattingEnabled = true;
+            this.course_view.Location = new System.Drawing.Point(572, 13);
+            this.course_view.Name = "course_view";
+            this.course_view.Size = new System.Drawing.Size(394, 95);
+            this.course_view.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(835, 487);
+            this.ClientSize = new System.Drawing.Size(978, 487);
+            this.Controls.Add(this.course_view);
             this.Controls.Add(this.section_list);
             this.Controls.Add(this.student_label);
             this.Controls.Add(this.fullname_label);
@@ -235,5 +245,6 @@
         private System.Windows.Forms.Label fullname_label;
         private System.Windows.Forms.Label student_label;
         private System.Windows.Forms.ListView section_list;
+        private System.Windows.Forms.ListBox course_view;
     }
 }
