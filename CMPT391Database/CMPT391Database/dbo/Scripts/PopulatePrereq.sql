@@ -2026,7 +2026,5 @@ OR		(c.subject = 'STAT' AND c.level = 496
 AND		p.subject = 'STAT' AND p.level = 322);
 
 -- For 300,400 courses that have no prereqs, add a prereq to it so people can't enroll.
-INSERT INTO dbo.prereq (course, prereq)
-SELECT id, 595 as prereq
-FROM course
-WHERE id > 380 AND id NOT IN (SELECT course from prereq);
+DELETE FROM prereq
+WHERE prereq = 595;

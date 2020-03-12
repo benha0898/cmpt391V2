@@ -87,28 +87,7 @@ namespace WindowForm.New
                     term_dropdown.Enabled = true;
 
                     // Print to console all the courses this student has taken
-                    
-                    string queryString2 = @"
-                        SELECT c.subject as subject, c.level as level, s.id as section, s.term as term, s.year as year
-                        FROM takes t, section s, course c
-                        WHERE   t.student_id = @student_id AND
-                                t.section_id = s.id AND
-                                s.course_id = c.id AND
-                                s.year = @year
-                        ORDER BY year DESC, term, subject, level, section;";
-                    SqlCommand command2 = new SqlCommand(queryString2, con);
-                    command2.Parameters.AddWithValue("@student_id", studentid_input.Text);
-                    command2.Parameters.AddWithValue("@year", year.ToString());
-                    SqlDataReader reader2 = command2.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        Console.WriteLine("Courses student has taken: ");
-                        while (reader2.Read())
-                        {
-                            course_view.Items.Add(reader2["subject"] + " \t" + reader2["level"].ToString() + "\t" + reader2["section"].ToString() + "\t" + reader2["term"].ToString() + "\t" + reader2["year"].ToString());
-                        }
-                    }
-                    reader2.Close();
+                    show_course_list();
                 }
                 else
                 {
@@ -121,6 +100,37 @@ namespace WindowForm.New
             {
                 student_label.Text = "Please Enter Student ID";
             }
+        }
+
+        private void show_course_list()
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True;MultipleActiveResultSets=True");
+            con.Open();
+
+            course_view.Items.Clear();
+
+            string queryString = @"
+                        SELECT c.subject as subject, c.level as level, s.id as section, s.term as term, s.year as year
+                        FROM takes t, section s, course c
+                        WHERE   t.student_id = @student_id AND
+                                t.section_id = s.id AND
+                                s.course_id = c.id AND
+                                s.year = @year
+                        ORDER BY year DESC, term, subject, level, section;";
+            SqlCommand command = new SqlCommand(queryString, con);
+            command.Parameters.AddWithValue("@student_id", studentid_input.Text);
+            command.Parameters.AddWithValue("@year", year.ToString());
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                Console.WriteLine("Courses student has taken: ");
+                while (reader.Read())
+                {
+                    course_view.Items.Add(reader["subject"] + " \t" + reader["level"].ToString() + "\t" + reader["section"].ToString() + "\t" + reader["term"].ToString() + "\t" + reader["year"].ToString());
+                }
+            }
+            reader.Close();
+            con.Close();
         }
 
         private void term_dropdown_SelectedIndexChanged(object sender, EventArgs e)
@@ -347,7 +357,10 @@ namespace WindowForm.New
                                 INSERT INTO takes (student_id, section_id)
                                 VALUES (
                                     @StudentId,
-                                    @SectionId);";
+                                    @SectionId);
+                                UPDATE section
+                                SET vacancies = vacancies - 1
+                                WHERE id = @SectionId";
 
 
                             command2 = new SqlCommand(queryString2, con, trans);
@@ -359,6 +372,8 @@ namespace WindowForm.New
 
                             MessageBox.Show("Success! Course Added.");
                             confirm_sectionlist.Clear();
+
+                            show_course_list();
                         }
                         catch (Exception ex)
                         {
