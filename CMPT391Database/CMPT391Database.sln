@@ -7,6 +7,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CMPT391Database", "CMPT391D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowForm", "WindowForm\WindowForm.csproj", "{195A1E2D-4B3A-466D-BFC7-6EA59CFF84FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataWarehouse", "DataWarehouse\DataWarehouse.csproj", "{BB0256A1-C9C2-4FF0-BA88-73D1093AEE04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{195A1E2D-4B3A-466D-BFC7-6EA59CFF84FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{195A1E2D-4B3A-466D-BFC7-6EA59CFF84FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{195A1E2D-4B3A-466D-BFC7-6EA59CFF84FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB0256A1-C9C2-4FF0-BA88-73D1093AEE04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB0256A1-C9C2-4FF0-BA88-73D1093AEE04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB0256A1-C9C2-4FF0-BA88-73D1093AEE04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB0256A1-C9C2-4FF0-BA88-73D1093AEE04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
