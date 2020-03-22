@@ -21,14 +21,15 @@ namespace DataWarehouse
         {
             int year = DateTime.Now.Year;
             int i;
-            instructor_deptdrop.Items.Add("Department");
 
+            course_leveldrop.Items.Add("100");
+            course_leveldrop.Items.Add("200");
+            course_leveldrop.Items.Add("300");
+            course_leveldrop.Items.Add("400");
+            semester_semdrop.Items.Add("Fall ");
+            semester_semdrop.Items.Add("Winter ");
 
-            semester_semdrop.Items.Add("Fall " + year.ToString());
-            semester_semdrop.Items.Add("Winter " + year.ToString());
-            semester_yeardrop.Items.Add(year.ToString());
-
-            for (i = year; i < year-10; i--) {
+            for (i = year; i > year-10; i--) {
                 semester_yeardrop.Items.Add(i.ToString());
             }
 
