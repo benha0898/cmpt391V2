@@ -91,10 +91,11 @@
             // instructor_deptdrop
             // 
             this.instructor_deptdrop.FormattingEnabled = true;
-            this.instructor_deptdrop.Location = new System.Drawing.Point(104, 279);
+            this.instructor_deptdrop.Location = new System.Drawing.Point(287, 284);
             this.instructor_deptdrop.Name = "instructor_deptdrop";
-            this.instructor_deptdrop.Size = new System.Drawing.Size(158, 21);
+            this.instructor_deptdrop.Size = new System.Drawing.Size(258, 21);
             this.instructor_deptdrop.TabIndex = 5;
+            this.instructor_deptdrop.SelectedIndexChanged += new System.EventHandler(this.instructor_deptdrop_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -186,7 +187,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(101, 263);
+            this.label9.Location = new System.Drawing.Point(284, 268);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 13);
             this.label9.TabIndex = 16;
@@ -195,7 +196,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(284, 263);
+            this.label10.Location = new System.Drawing.Point(103, 268);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(44, 13);
             this.label10.TabIndex = 18;
@@ -204,10 +205,11 @@
             // instructor_facdrop
             // 
             this.instructor_facdrop.FormattingEnabled = true;
-            this.instructor_facdrop.Location = new System.Drawing.Point(287, 279);
+            this.instructor_facdrop.Location = new System.Drawing.Point(106, 284);
             this.instructor_facdrop.Name = "instructor_facdrop";
             this.instructor_facdrop.Size = new System.Drawing.Size(158, 21);
             this.instructor_facdrop.TabIndex = 17;
+            this.instructor_facdrop.SelectedIndexChanged += new System.EventHandler(this.instructor_facdrop_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -249,7 +251,7 @@
             this.course_deptdrop.FormattingEnabled = true;
             this.course_deptdrop.Location = new System.Drawing.Point(467, 202);
             this.course_deptdrop.Name = "course_deptdrop";
-            this.course_deptdrop.Size = new System.Drawing.Size(158, 21);
+            this.course_deptdrop.Size = new System.Drawing.Size(234, 21);
             this.course_deptdrop.TabIndex = 22;
             // 
             // Form1
