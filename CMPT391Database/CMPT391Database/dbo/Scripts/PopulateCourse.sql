@@ -1,4 +1,4 @@
-﻿/* Populate Student table */
+﻿/* Populate Course table */
 DELETE from dbo.course;
 DBCC CHECKIDENT('dbo.course', RESEED, 0);
 

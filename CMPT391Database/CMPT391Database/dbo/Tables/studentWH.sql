@@ -4,5 +4,5 @@
     [name] VARCHAR(50) NULL, 
     [address] VARCHAR(50) NULL, 
     [major] VARCHAR(50) NULL, 
-    [status] VARCHAR(50) NULL
+    [status] VARCHAR(50) NULL DEFAULT 'Full Time'
 )
