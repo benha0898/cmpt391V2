@@ -19,14 +19,20 @@ namespace DataWarehouse
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            instructor_dropdown.Items.Add("Department");
-            semester_dropdown.Items.Add("Term");
-            semester_dropdown.Items.Add("Year");
-            student_dropdown.Items.Add("Major");
-            student_dropdown.Items.Add("Status");
-            course_dropdown.Items.Add("Subject");
-            course_dropdown.Items.Add("Department");
-            course_dropdown.Items.Add("Credit");
+            int year = DateTime.Now.Year;
+            int i;
+            instructor_deptdrop.Items.Add("Department");
+
+
+            semester_semdrop.Items.Add("Fall " + year.ToString());
+            semester_semdrop.Items.Add("Winter " + year.ToString());
+            semester_yeardrop.Items.Add(year.ToString());
+
+            for (i = year; i < year-10; i--) {
+                semester_yeardrop.Items.Add(i.ToString());
+            }
+
+
         }
     }
 }

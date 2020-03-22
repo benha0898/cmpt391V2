@@ -93,5 +93,6 @@
     <None Include="dbo\Scripts\PopulatePrereq.sql" />
     <None Include="dbo\Scripts\PopulateSection.sql" />
     <None Include="dbo\Scripts\PopulateTakes.sql" />
+    <None Include="dbo\Scripts\Script1.sql" />
   </ItemGroup>
 </Project>
