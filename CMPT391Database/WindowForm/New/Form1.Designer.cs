@@ -43,6 +43,7 @@
             this.student_label = new System.Windows.Forms.Label();
             this.section_list = new System.Windows.Forms.ListView();
             this.course_view = new System.Windows.Forms.ListBox();
+            this.drop_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // student_id
@@ -113,7 +114,7 @@
             this.confirm_sectionlist.Location = new System.Drawing.Point(572, 125);
             this.confirm_sectionlist.Margin = new System.Windows.Forms.Padding(2);
             this.confirm_sectionlist.Name = "confirm_sectionlist";
-            this.confirm_sectionlist.Size = new System.Drawing.Size(394, 289);
+            this.confirm_sectionlist.Size = new System.Drawing.Size(322, 289);
             this.confirm_sectionlist.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.confirm_sectionlist.TabIndex = 6;
             this.confirm_sectionlist.UseCompatibleStateImageBehavior = false;
@@ -197,14 +198,26 @@
             this.course_view.FormattingEnabled = true;
             this.course_view.Location = new System.Drawing.Point(572, 13);
             this.course_view.Name = "course_view";
-            this.course_view.Size = new System.Drawing.Size(394, 95);
+            this.course_view.Size = new System.Drawing.Size(322, 95);
             this.course_view.TabIndex = 14;
+            this.course_view.SelectedIndexChanged += new System.EventHandler(this.course_view_SelectedIndexChanged);
+            // 
+            // drop_button
+            // 
+            this.drop_button.Location = new System.Drawing.Point(900, 52);
+            this.drop_button.Name = "drop_button";
+            this.drop_button.Size = new System.Drawing.Size(75, 23);
+            this.drop_button.TabIndex = 15;
+            this.drop_button.Text = "Drop";
+            this.drop_button.UseVisualStyleBackColor = true;
+            this.drop_button.MouseClick += new System.Windows.Forms.MouseEventHandler(this.drop_button_MouseClick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(978, 487);
+            this.Controls.Add(this.drop_button);
             this.Controls.Add(this.course_view);
             this.Controls.Add(this.section_list);
             this.Controls.Add(this.student_label);
@@ -246,5 +259,6 @@
         private System.Windows.Forms.Label student_label;
         private System.Windows.Forms.ListView section_list;
         private System.Windows.Forms.ListBox course_view;
+        private System.Windows.Forms.Button drop_button;
     }
 }

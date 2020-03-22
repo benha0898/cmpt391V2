@@ -62,6 +62,7 @@ namespace WindowForm.New
             add_button.Enabled = false;
             remove_button.Enabled = false;
             submit_button.Enabled = false;
+            drop_button.Enabled = false;
         }
 
 
@@ -402,8 +403,65 @@ namespace WindowForm.New
             con.Close();
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void course_view_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (course_view.SelectedItems.Count > 0)
+                drop_button.Enabled = true;
+            else
+                drop_button.Enabled = false;
+        }
+
+        private void drop_button_MouseClick(object sender, MouseEventArgs e)
+        {
+            string[] split_string = course_view.SelectedItem.ToString().Split('\t');
+            /*
+            for (int i = 0; i< split_string.Length; i++)
+            {
+                Console.WriteLine(split_string[i]);
+            }
+            */
+            string section = split_string[2];
+
+            SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True");
+            con.Open();
+
+            SqlCommand command = con.CreateCommand();
+            SqlTransaction trans;
+            trans = con.BeginTransaction("drop_course_trans");
+
+            command.Connection = con;
+            command.Transaction = trans;
+
+            try
+            {
+                string queryString = @"
+                DELETE FROM takes WHERE section_id = @section_id;
+                UPDATE section SET vacancies = vacancies + 1 WHERE id = @section_id;";
+
+                command = new SqlCommand(queryString, con, trans);
+                command.Parameters.AddWithValue("@section_id", section);
+                command.ExecuteNonQuery();
+
+                trans.Commit();
+                MessageBox.Show("Course Dropped!");
+
+                show_course_list();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+                Console.WriteLine(" Message: {0}", ex.Message);
+            }
+            try
+            {
+                trans.Rollback();
+            }
+            catch (Exception ex2)
+            {
+                Console.WriteLine("Commit Exception Type: {0}", ex2.GetType());
+                Console.WriteLine(" Message: {0}", ex2.Message);
+            }
+
 
         }
     }
