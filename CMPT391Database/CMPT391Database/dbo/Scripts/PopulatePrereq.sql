@@ -206,6 +206,10 @@ OR		(c.subject = 'BUSN' AND c.level = 330
 AND		p.subject = 'BUSN' AND p.level = 201)
 OR		(c.subject = 'BUSN' AND c.level = 350
 AND		p.subject = 'FNCE' AND p.level = 301)
+OR		(c.subject = 'BUSN' AND c.level = 396
+AND		p.subject = 'MGTS' AND p.level = 312)
+OR		(c.subject = 'BUSN' AND c.level = 397
+AND		p.subject = 'ORGA' AND p.level = 201)
 OR		(c.subject = 'BUSN' AND c.level = 401
 AND		p.subject = 'FNCE' AND p.level = 301)
 OR		(c.subject = 'BUSN' AND c.level = 401
@@ -1217,6 +1221,9 @@ OR		(c.subject = 'MGMT' AND c.level = 312
 AND		p.subject = 'MGMT' AND p.level = 122)
 OR		(c.subject = 'MGMT' AND c.level = 312
 AND		p.subject = 'MGMT' AND p.level = 131)
+/* MGTS */
+OR		(c.subject = 'MGTS' AND c.level = 312
+AND		p.subject = 'STAT' AND p.level = 151)
 /* MUSC */
 OR		(c.subject = 'MUSC' AND c.level = 104
 AND		p.subject = 'MUSC' AND p.level = 103)
@@ -1565,6 +1572,9 @@ OR		(c.subject = 'NURS' AND c.level = 479
 AND		p.subject = 'NURS' AND p.level = 474)
 OR		(c.subject = 'NURS' AND c.level = 489
 AND		p.subject = 'NURS' AND p.level = 479)
+/* ORGA */
+OR		(c.subject = 'ORGA' AND c.level = 201
+AND		p.subject = 'ECON' AND p.level = 102)
 /* PHIL */
 OR		(c.subject = 'PHIL' AND c.level = 204
 AND		p.subject = 'PHIL' AND p.level = 100)
@@ -2026,5 +2036,8 @@ OR		(c.subject = 'STAT' AND c.level = 496
 AND		p.subject = 'STAT' AND p.level = 322);
 
 -- For 300,400 courses that have no prereqs, add a prereq to it so people can't enroll.
-DELETE FROM prereq
-WHERE prereq = 595;
+DELETE
+FROM course
+WHERE id NOT IN (select course from prereq)
+and level > 350
+and (CAST(subject as nchar(4)) + ' ' + CAST(level as varchar) <> 'MUSC 361');

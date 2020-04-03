@@ -9,3 +9,7 @@
 	credit INT NULL,
 	CONSTRAINT fk_course_department FOREIGN KEY (dept) REFERENCES department (dept_name),
 )
+
+GO
+
+CREATE INDEX [IX_course_subject] ON [dbo].[course] ([subject])

@@ -191,6 +191,7 @@
             this.section_list.Size = new System.Drawing.Size(230, 289);
             this.section_list.TabIndex = 13;
             this.section_list.UseCompatibleStateImageBehavior = false;
+            this.section_list.SelectedIndexChanged += new System.EventHandler(this.section_list_SelectedIndexChanged);
             this.section_list.MouseClick += new System.Windows.Forms.MouseEventHandler(this.section_list_MouseClick);
             // 
             // course_view

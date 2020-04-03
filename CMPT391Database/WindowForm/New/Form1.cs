@@ -311,13 +311,14 @@ namespace WindowForm.New
                 string queryString = @"
                     IF NOT EXISTS (
                         SELECT p.prereq
-                        FROM prereq p, section s
-                        WHERE   p.course = @CourseId AND
-                                s.id NOT IN (
-                                    SELECT s.id FROM takes t
-                                    WHERE   t.student_id = @StudentId AND
-                                            s.id = t.section_id) AND
-                                p.prereq = s.course_id)
+                        FROM prereq p
+                        WHERE p.course = @CourseId
+                        AND NOT EXISTS (
+                            SELECT s.id
+                            FROM section s, takes t
+                            WHERE s.course_id = p.prereq
+                            AND s.id = t.section_id
+                            AND t.student_id = @StudentId))
                     BEGIN
                         IF NOT EXISTS (
                             SELECT section_id
@@ -462,6 +463,11 @@ namespace WindowForm.New
                 Console.WriteLine(" Message: {0}", ex2.Message);
             }
 
+
+        }
+
+        private void section_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

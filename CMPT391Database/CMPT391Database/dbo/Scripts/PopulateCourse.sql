@@ -1,4 +1,4 @@
-﻿/* Populate Course table */
+﻿	/* Populate Course table */
 DELETE from dbo.course;
 DBCC CHECKIDENT('dbo.course', RESEED, 0);
 
@@ -473,6 +473,7 @@ VALUES
 	('MGMT', 240, 3),
 	('MGMT', 261, 3),
 	('MGMT', 312, 3),
+	('MGTS', 312, 3),
 	('MUSC', 100, 3),
 	('MUSC', 103, 3),
 	('MUSC', 104, 3),
@@ -599,6 +600,7 @@ VALUES
 	('NURS', 484, 3),
 	('NURS', 485, 3),
 	('NURS', 489, 3),
+	('ORGA', 201, 3),
 	('PHIL', 100, 3),
 	('PHIL', 103, 3),
 	('PHIL', 125, 3),
