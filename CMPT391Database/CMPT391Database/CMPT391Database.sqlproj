@@ -81,8 +81,14 @@
     <None Include="dbo\Scripts\PopulateStudentWH.sql" />
     <None Include="dbo\Scripts\PopulateUniversityWH.sql" />
     <None Include="dbo\Scripts\UpdateSectionVacancies.sql" />
-    <Build Include="dbo\Views\SectionF20View.sql" />
+    <Build Include="dbo\Stored Procedures\ShowCourseList.sql" />
+    <Build Include="dbo\Stored Procedures\SectionList.sql" />
+    <Build Include="dbo\Stored Procedures\GetStudent.sql" />
+    <Build Include="dbo\Stored Procedures\GetCourse.sql" />
+    <Build Include="dbo\Views\TakesSectionCourse.sql" />
+    <Build Include="dbo\Stored Procedures\ShowSectionList.sql" />
     <Build Include="dbo\Views\SectionW20View.sql" />
+    <Build Include="dbo\Views\SectionF20View.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CMPT391Database.refactorlog" />

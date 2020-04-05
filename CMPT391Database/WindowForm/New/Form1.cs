@@ -73,8 +73,11 @@ namespace WindowForm.New
                 SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True;MultipleActiveResultSets=True");
                 con.Open();
 
-                string queryString = "SELECT first_name + ' ' + last_name AS full_name FROM student WHERE id=@id";
-                SqlCommand command = new SqlCommand(queryString, con);
+                //string queryString = "SELECT first_name + ' ' + last_name AS full_name FROM student WHERE id=@id";
+                //SqlCommand command = new SqlCommand(queryString, con);
+
+                SqlCommand command = new SqlCommand("GetStudent", con);
+                command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@id", studentid.ToString());
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.HasRows)
@@ -110,6 +113,7 @@ namespace WindowForm.New
 
             course_view.Items.Clear();
 
+            /*
             string queryString = @"
                         SELECT c.subject as subject, c.level as level, s.id as section, s.term as term, s.year as year
                         FROM takes t, section s, course c
@@ -119,6 +123,10 @@ namespace WindowForm.New
                                 s.year = @year
                         ORDER BY year DESC, term, subject, level, section;";
             SqlCommand command = new SqlCommand(queryString, con);
+            */
+
+            SqlCommand command = new SqlCommand("ShowCourseList", con);
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@student_id", studentid_input.Text);
             command.Parameters.AddWithValue("@year", year.ToString());
             SqlDataReader reader = command.ExecuteReader();
@@ -152,11 +160,17 @@ namespace WindowForm.New
 
             //string queryString = "SELECT course.level, section.term FROM course LEFT JOIN section ON course.id = section.course_id WHERE course.subject=@course AND section.term = @term";
             //query now retrieves by term by matching the fall,winter,summer/spring
+
+            /*
             string queryString = @"
                 SELECT id, level
                 FROM course
                 WHERE course.subject = @course;";
             SqlCommand command = new SqlCommand(queryString, con);
+            */
+
+            SqlCommand command = new SqlCommand("GetCourse", con);
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@course", course_dropdown.SelectedItem.ToString());
             SqlDataReader reader = command.ExecuteReader();
             try
@@ -195,14 +209,19 @@ namespace WindowForm.New
             SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UniversityDB;Integrated Security=True;MultipleActiveResultSets=True");
             con.Open();
 
+            /*
             string queryString = @"
                 SELECT section.id
                 FROM section
                 WHERE   course_id = @course_id AND
                         term = @term AND
                         year = @year";
-
             SqlCommand command = new SqlCommand(queryString, con);
+            */
+
+            SqlCommand command = new SqlCommand("ShowSectionList", con);
+            command.CommandType = CommandType.StoredProcedure;
+            
             command.Parameters.AddWithValue("@course_id", course_id);
             command.Parameters.AddWithValue("@term", term);
             command.Parameters.AddWithValue("@year", year);
@@ -213,8 +232,13 @@ namespace WindowForm.New
                 while (reader.Read())
                 {
                     // For each section, check for vacancy
+                    /*
                     string queryString2 = "SELECT vacancies FROM section WHERE id = @id";
                     SqlCommand command2 = new SqlCommand(queryString2, con);
+                    */
+
+                    SqlCommand command2 = new SqlCommand("SectionList", con);
+                    command2.CommandType = CommandType.StoredProcedure;
                     command2.Parameters.AddWithValue("@id", reader["id"].ToString());
                     SqlDataReader reader2 = command2.ExecuteReader();
                     try
@@ -467,6 +491,11 @@ namespace WindowForm.New
         }
 
         private void section_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void studentid_input_TextChanged(object sender, EventArgs e)
         {
 
         }

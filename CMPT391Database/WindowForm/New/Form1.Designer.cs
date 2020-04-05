@@ -160,6 +160,7 @@
             this.studentid_input.Name = "studentid_input";
             this.studentid_input.Size = new System.Drawing.Size(127, 20);
             this.studentid_input.TabIndex = 10;
+            this.studentid_input.TextChanged += new System.EventHandler(this.studentid_input_TextChanged);
             this.studentid_input.Leave += new System.EventHandler(this.studentid_input_Leave);
             // 
             // fullname_label
